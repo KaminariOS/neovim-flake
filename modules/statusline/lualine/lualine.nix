@@ -120,7 +120,7 @@ in {
         type = with types; listOf str;
         description = "active config for: | (A) | B | C       X | Y | Z |";
         default = [
-          ''
+        ''
             {
               "mode",
               icons_enabled = true,
@@ -143,13 +143,13 @@ in {
               colored = true,
               icon_only = true,
               icon = { align = 'left' },
-              color = {bg='${colorPuccin}', fg='lavender'},
+              color = {bg='${none}', fg='lavender'},
             }
           ''
           ''
             {
               "filename",
-              color = {bg='${colorPuccin}'},
+              color = {bg='none'},
               symbols = {modified = '', readonly = ''},
             }
           ''
@@ -172,7 +172,7 @@ in {
               },
               symbols = {added = '+', modified = '~', removed = '-'}, -- Changes the diff symbols
               color = {
-                bg='${colorPuccin}',
+                bg='none',
                 fg='lavender'
               },
             }
@@ -219,7 +219,6 @@ in {
                 return msg
               end,
               icon = ' ',
-              color = {bg='${colorPuccin}', fg='lavender'},
             }
           ''
           ''
@@ -227,7 +226,6 @@ in {
               "diagnostics",
               sources = {'nvim_lsp', 'nvim_diagnostic', 'coc'},
               symbols = {error = '󰅙  ', warn = '  ', info = '  ', hint = '󰌵 '},
-              color = {bg='${colorPuccin}', fg='lavender'},
               diagnostics_color = {
                 color_error = { fg = 'red' },
                 color_warn = { fg = 'yellow' },
@@ -244,20 +242,16 @@ in {
         default = [
           ''
             {
-              'searchcount',
-              maxcount = 999,
-              timeout = 120,
-              color = {bg='${colorPuccin}', fg='lavender'}
-            }
-          ''
-          ''
-            {
-              "branch",
-              icon = ' •',
-              color = {bg='${colorPuccin}', fg='lavender'},
-            }
-          ''
-        ];
+              "fileformat",
+              color = {bg='none', fg='lavender'},
+              symbols = {
+                unix = '', -- e712
+                dos = '',  -- e70f
+                mac = '',  -- e711
+              },
+            },
+          }
+        '';
       };
 
       z = mkOption {
@@ -267,25 +261,27 @@ in {
           ''
             {
               "progress",
-              separator = {
-                left = '',
-              },
+              color = {bg='none', fg='lavender'},
             }
-          ''
-          ''
+            ''
+            ''
             {
               "location",
+              color = {bg='none', fg='lavender'},
             }
-          ''
-          ''
+            ''
+            ''
             {
-              "fileformat",
-              color = {fg='black'},
-              symbols = {
-                unix = '', -- e712
-                dos = '',  -- e70f
-                mac = '',  -- e711
+              "branch",
+              icon = ' •',
+              separator = {
+                left = '(',
               },
+              color = {bg='none', fg='lavender'},
+
+            },
+          }
+        '';
             }
           ''
         ];
