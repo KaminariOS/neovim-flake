@@ -112,7 +112,7 @@ inputs: let
         enable = true;
         name = "catppuccin";
         style = "mocha";
-        transparent = false;
+        transparent = true;
       };
       vim.autopairs.enable = true;
 

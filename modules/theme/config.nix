@@ -10,7 +10,7 @@ in {
       enable = mkDefault false;
       name = mkDefault "onedark";
       style = mkDefault "darker";
-      transparent = mkDefault false;
+      transparent = mkDefault true;
       extraConfig = mkDefault "";
     };
   };
