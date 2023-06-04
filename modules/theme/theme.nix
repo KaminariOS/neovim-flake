@@ -26,7 +26,7 @@ in {
 
     transparent = mkOption {
       type = with types; bool;
-      default = false;
+      default = true;
       description = "Whether or not transparency should be enabled. Has no effect for themes that do not support transparency";
     };
 
