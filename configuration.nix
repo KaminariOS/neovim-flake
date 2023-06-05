@@ -114,7 +114,10 @@ inputs: let
         style = "mocha";
         transparent = true;
       };
-      vim.autopairs.enable = true;
+      vim = {
+        autopairs.enable = true;
+        autosaving.enable = true;
+      };
 
       vim.autocomplete = {
         enable = true;
