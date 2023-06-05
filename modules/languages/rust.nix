@@ -82,6 +82,7 @@ in {
       vim.lsp.lspconfig.enable = true;
       vim.lsp.lspconfig.sources.rust-lsp = ''
         local rt = require('rust-tools')
+        vim.g.cargo_shell_command_runner = '!'
         rust_on_attach = function(client, bufnr)
           default_on_attach(client, bufnr)
           local opts = { noremap=true, silent=true, buffer = bufnr }

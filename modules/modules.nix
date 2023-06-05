@@ -15,6 +15,7 @@
     ./lsp
     ./treesitter
     ./autopairs
+    ./autosaving
     ./snippets
     ./git
     ./minimap
