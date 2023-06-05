@@ -40,6 +40,7 @@ with lib; let
     "telescope"
     "rust-tools"
     "onedark"
+    "nightfox"
     "catppuccin"
     "dracula"
     "oxocarbon"

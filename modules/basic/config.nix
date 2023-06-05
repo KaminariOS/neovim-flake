@@ -11,52 +11,33 @@ in {
   config = {
     vim.startPlugins = ["plenary-nvim"] ++ lib.optionals (cfg.spellChecking.enableProgrammingWordList) ["vim-dirtytalk"];
 
-    vim.maps.normal =
-      mkIf cfg.disableArrows {
-        "<up>" = {
-          action = "<nop>";
-
-          noremap = false;
-        };
-        "<down>" = {
-          action = "<nop>";
-
-          noremap = false;
-        };
-        "<left>" = {
-          action = "<nop>";
-          noremap = false;
-        };
-        "<right>" = {
-          action = "<nop>";
-          noremap = false;
-        };
-      }
-      // mkIf cfg.mapLeaderSpace {
-        "<space>" = {
-          action = "<nop>";
-        };
-      };
-
-    vim.maps.insert = mkIf cfg.disableArrows {
-      "<up>" = {
-        action = "<nop>";
-        noremap = false;
-      };
-      "<down>" = {
-        action = "<nop>";
-        noremap = false;
-      };
-      "<left>" = {
-        action = "<nop>";
-        noremap = false;
-      };
-      "<right>" = {
-        action = "<nop>";
-        noremap = false;
-      };
+    vim.nmap = mkIf cfg.disableArrows {
+      "<up>" = "<nop>";
+      "<down>" = "<nop>";
+      "<left>" = "<nop>";
+      "<right>" = "<nop>";
     };
 
+    vim.imap = mkIf cfg.disableArrows {
+      "<up>" = "<nop>";
+      "<down>" = "<nop>";
+      "<left>" = "<nop>";
+      "<right>" = "<nop>";
+    };
+
+    vim.nnoremap = mkIf cfg.mapLeaderSpace {
+    "<space>" = "<nop>";
+    "<leader><leader>" = "<cmd>bn<cr>";
+    };
+
+    vim.vnoremap = mkIf cfg.mapLeaderSpace {
+    "<space>" = "<nop>";
+    "<leader><leader>" = "<cmd>bn<cr>";
+    };
+    vim.tnoremap = mkIf cfg.mapLeaderSpace {
+    "<space>" = "<nop>";
+    "<leader><leader>" = "<cmd>bn<cr>";
+    };
     vim.configRC.basic = nvim.dag.entryAfter ["globalsScript"] ''
       ${optionalString cfg.debugMode.enable ''
         " Debug mode settings
@@ -66,6 +47,35 @@ in {
 
       " Settings that are set for everything
       set encoding=utf-8
+
+      nnoremap <C-j> <Esc>
+      inoremap <C-j> J
+      vnoremap <C-j> <Esc>
+      snoremap <C-j> <Esc>
+      xnoremap <C-j> <Esc>
+      cnoremap <C-j> <C-c>
+      onoremap <C-j> <Esc>
+      lnoremap <C-j> <Esc>
+      tnoremap <C-j> <C-\><C-n>
+
+      " Remap splits navigation to just CTRL + hjkl
+      nnoremap <C-h> <C-w>h
+      nnoremap <C-j> <C-w>j
+      nnoremap <C-k> <C-w>k
+      nnoremap <C-l> <C-w>l
+
+      cnoremap <C-a> <Home> cnoremap <C-e> <End>
+      cnoremap <C-p> <Up>
+      cnoremap <C-n> <Down>
+      cnoremap <C-b> <Left>
+      cnoremap <C-f> <Right>
+
+      " Make adjusing split sizes a bit more friendly
+      noremap <silent> <C-Left> :vertical resize +3<CR>
+      noremap <silent> <C-Right> :vertical resize -3<CR>
+      noremap <silent> <C-Up> :resize +3<CR>
+      noremap <silent> <C-Down> :resize -3<CR>
+
       set mouse=${cfg.mouseSupport}
       set tabstop=${toString cfg.tabWidth}
       set shiftwidth=${toString cfg.tabWidth}
