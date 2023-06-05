@@ -62,7 +62,7 @@ inputs: let
         };
         sql.enable = isMaximal;
         rust = {
-          enable = isMaximal;
+          enable = true;
           crates.enable = true;
         };
         java.enable = isMaximal;
