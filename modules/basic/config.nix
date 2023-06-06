@@ -28,15 +28,18 @@ in {
     vim.nnoremap = mkIf cfg.mapLeaderSpace {
     "<space>" = "<nop>";
     "<leader><leader>" = "<cmd>bn<cr>";
+    "<leader>bd" = "<cmd>bd<cr>";
     };
 
     vim.vnoremap = mkIf cfg.mapLeaderSpace {
     "<space>" = "<nop>";
     "<leader><leader>" = "<cmd>bn<cr>";
+    "<leader>bd" = "<cmd>bd<cr>";
     };
     vim.tnoremap = mkIf cfg.mapLeaderSpace {
     "<space>" = "<nop>";
     "<leader><leader>" = "<cmd>bn<cr>";
+    "<leader>bd" = "<cmd>bd<cr>";
     };
     vim.configRC.basic = nvim.dag.entryAfter ["globalsScript"] ''
       ${optionalString cfg.debugMode.enable ''
@@ -71,10 +74,13 @@ in {
       cnoremap <C-f> <Right>
 
       " Make adjusing split sizes a bit more friendly
-      noremap <silent> <C-Left> :vertical resize +3<CR>
-      noremap <silent> <C-Right> :vertical resize -3<CR>
-      noremap <silent> <C-Up> :resize +3<CR>
-      noremap <silent> <C-Down> :resize -3<CR>
+      noremap <C-Left> <cmd>vertical resize +3<CR>
+      noremap <C-Right> <cmd>vertical resize -3<CR>
+      noremap <C-Up> <cmd>resize +3<CR>
+      noremap <C-Down> <cmd>resize -3<CR>
+
+      imap <C-e> <cmd>:wq<cr> 
+      nmap <C-e> <cmd>:wq<cr> 
 
       set mouse=${cfg.mouseSupport}
       set tabstop=${toString cfg.tabWidth}
