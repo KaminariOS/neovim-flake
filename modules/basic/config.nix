@@ -49,11 +49,11 @@ in {
       set encoding=utf-8
 
       nnoremap <C-j> <Esc>
-      inoremap <C-j> J
+      inoremap <C-j> <Esc>
       vnoremap <C-j> <Esc>
       snoremap <C-j> <Esc>
       xnoremap <C-j> <Esc>
-      cnoremap <C-j> <C-c>
+      cnoremap <C-j> <Esc>
       onoremap <C-j> <Esc>
       lnoremap <C-j> <Esc>
       tnoremap <C-j> <C-\><C-n>
