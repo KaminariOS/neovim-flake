@@ -4,30 +4,35 @@
 <h1 align="center">❄️  neovim-flake</h1>
 <div align="center">
 <p>
-    <a href="https://github.com/NotAShelf/neovim-flake/releases/latest">
-      <img alt="Latest release" src="https://img.shields.io/github/v/release/NotAShelf/neovim-flake?style=for-the-badge&logo=nixos&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41" />
+    <a href="https://github.com/KaminariOS/neovim-flake/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/KaminariOS/neovim-flake?style=for-the-badge&logo=nixos&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41" />
     </a>
-    <a href="https://github.com/NotAShelf/neovim-flake/pulse">
-      <img alt="Last commit" src="https://img.shields.io/github/last-commit/NotAShelf/neovim-flake?style=for-the-badge&logo=starship&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41"/>
+    <a href="https://github.com/KaminariOS/neovim-flake/pulse">
+      <img alt="Last commit" src="https://img.shields.io/github/last-commit/KaminariOS/neovim-flake?style=for-the-badge&logo=starship&color=8bd5ca&logoColor=D9E0EE&labelColor=302D41"/>
     </a>
-    <a href="https://github.com/NotAShelf/neovim-flake/blob/main/LICENSE">
-      <img alt="License" src="https://img.shields.io/github/license/NotAShelf/neovim-flake?style=for-the-badge&logo=nixos&color=ee999f&logoColor=D9E0EE&labelColor=302D41" />
+    <a href="https://github.com/KaminariOS/neovim-flake/blob/main/LICENSE">
+      <img alt="License" src="https://img.shields.io/github/license/KaminariOS/neovim-flake?style=for-the-badge&logo=nixos&color=ee999f&logoColor=D9E0EE&labelColor=302D41" />
     </a>
-    <a href="https://github.com/NotAShelf/neovim-flake/stargazers">
-      <img alt="Stars" src="https://img.shields.io/github/stars/NotAShelf/neovim-flake?style=for-the-badge&logo=nixos&color=c69ff5&logoColor=D9E0EE&labelColor=302D41" />
+    <a href="https://github.com/KaminariOS/neovim-flake/stargazers">
+      <img alt="Stars" src="https://img.shields.io/github/stars/KaminariOS/neovim-flake?style=for-the-badge&logo=nixos&color=c69ff5&logoColor=D9E0EE&labelColor=302D41" />
     </a>
-    <a href="https://github.com/NotAShelf/neovim-flake/issues">
-      <img alt="Issues" src="https://img.shields.io/github/issues/NotAShelf/neovim-flake?style=for-the-badge&logo=bilibili&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41" />
+    <a href="https://github.com/KaminariOS/neovim-flake/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/KaminariOS/neovim-flake?style=for-the-badge&logo=bilibili&color=F5E0DC&logoColor=D9E0EE&labelColor=302D41" />
     </a>
-    <a href="https://github.com/NotAShelf/neovim-flake">
+    <a href="https://github.com/KaminariOS/neovim-flake">
+      <img alt="Repo Size" src="https://img.shields.io/github/repo-size/KaminariOS/neovim-flake?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41" />
+    </a>
+    <a href="https://liberapay.com/notashelf/" title="Donate to this project using Liberapay">
+      <img alt="Patreon donate button" src="https://img.shields.io/badge/liberapay-donate-yellow.svg?style=for-the-badge&logo=starship&color=f5a97f&logoColor=D9E0EE&labelColor=302D41" />
+    <a href="https://github.com/KaminariOS/neovim-flake">
       <img alt="Repo Size" src="https://img.shields.io/github/repo-size/NotAShelf/neovim-flake?color=%23DDB6F2&label=SIZE&logo=codesandbox&style=for-the-badge&logoColor=D9E0EE&labelColor=302D41" />
     </a>
 </p>
-
-<p align="center">
-    <img src="https://stars.medv.io/NotAShelf/neovim-flake.svg", title="stars"/>
-</p>
-
+<!-- 
+    <p align="center">
+      <img src="https://stars.medv.io/KaminariOS/neovim-flake.svg", title="commits"/>
+    </p>
+-->
 <div align="center">
   <a>
     A highly modular, configurable, extensible and easy to use Neovim configuration wrapper written in Nix. Designed for flexibility and ease of use, this flake allows you to easily configure your Neovim instance with a few lines of Nix code.
@@ -65,7 +70,7 @@
 If you would like to try out the configuration before even thinking about installing it, you can run the following command
 
 ```console
-nix run github:notashelf/neovim-flake
+nix run github:KaminariOS/neovim-flake
 ```
 
 This will get you a feel for the base configuration and UI design. The flake exposes `#nix` as the default package, providing minimal language support and various
@@ -104,7 +109,7 @@ If you want to dive right into trying **neovim-flake** you can get a fully featu
 language support by running:
 
 ```console
-nix run github:notashelf/neovim-flake
+nix run github:KaminariOS/neovim-flake
 ```
 
 Please create an issue on the [issue tracker](../../../issues) if you find the documentation lacking or confusing.
