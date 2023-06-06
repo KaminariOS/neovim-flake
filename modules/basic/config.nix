@@ -37,9 +37,6 @@ in {
     "<leader>bd" = "<cmd>bd<cr>";
     };
     vim.tnoremap = mkIf cfg.mapLeaderSpace {
-    "<space>" = "<nop>";
-    "<leader><leader>" = "<cmd>bn<cr>";
-    "<leader>bd" = "<cmd>bd<cr>";
     };
     vim.configRC.basic = nvim.dag.entryAfter ["globalsScript"] ''
       ${optionalString cfg.debugMode.enable ''
