@@ -30,7 +30,7 @@ inputs: let
       };
 
       vim.lsp = {
-        formatOnSave = true;
+        formatOnSave = false;
         lspkind.enable = false;
         lightbulb.enable = true;
         lspsaga.enable = false;
@@ -213,7 +213,7 @@ inputs: let
           navbuddy.enable = isMaximal;
         };
         smartcolumn = {
-          enable = true;
+          enable = !true;
           columnAt.languages = {
             # this is a freeform module, it's `buftype = int;` for configuring column position
             nix = 110;
