@@ -7,6 +7,7 @@
   inherit (lib) mkMerge mkIf mkBinding nvim getExe;
 
   cfg = config.vim.terminal.toggleterm;
+  toggleKey = "<c-\\>";
 in {
   config = mkMerge [
     (
@@ -19,7 +20,7 @@ in {
 
         vim.luaConfigRC.toggleterm = nvim.dag.entryAnywhere ''
           require("toggleterm").setup({
-            open_mapping = null,
+            open_mapping = [[${toggleKey}]],
             direction = '${toString cfg.direction}',
             -- TODO: this should probably be turned into a module that uses the lua function if and only if the user has not set it
             size = function(term)
@@ -57,6 +58,7 @@ in {
             hidden = true,
             on_open = function(term)
               vim.cmd("startinsert!")
+              vim.keymap.set( 't', [[${toggleKey}]], function() term:toggle() end, {silent = true, noremap = true, buffer = term.bufnr})
             end
           })
 

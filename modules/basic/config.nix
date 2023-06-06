@@ -79,8 +79,10 @@ in {
       noremap <C-Up> <cmd>resize +3<CR>
       noremap <C-Down> <cmd>resize -3<CR>
 
-      imap <C-e> <cmd>:wq<cr> 
-      nmap <C-e> <cmd>:wq<cr> 
+      imap <C-e> <cmd>wq<cr> 
+      nmap <C-e> <cmd>wq<cr> 
+      vmap <C-e> <cmd>wq<cr>
+      
 
       set mouse=${cfg.mouseSupport}
       set tabstop=${toString cfg.tabWidth}
