@@ -17,11 +17,17 @@ in {
     ./ts.nix
     ./zig.nix
     ./html.nix
+    # ./tex.nix
+    ./toml.nix
     ./svelte.nix
+    ./json.nix
+    ./yaml.nix
+    ./cmake.nix
     ./java.nix
     ./lua.nix
     ./php.nix
     ./terraform.nix
+    ./vim.nix
   ];
 
   options.vim.languages = {

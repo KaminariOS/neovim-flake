@@ -61,9 +61,18 @@ inputs: let
           lsp.server = "clangd";
         };
         sql.enable = isMaximal;
+        bash.enable = isMaximal;
+        vim.enable = isMaximal;
+        # tex.enable = true;
+        java.enable = isMaximal;
+        yaml.enable = isMaximal;
+        toml.enable = isMaximal;
+        cmake.enable = isMaximal;
+        json.enable = isMaximal;
+        svelte.enable = isMaximal;
         rust = {
-          enable = true;
-          crates.enable = true;
+          enable = isMaximal;
+          crates.enable = isMaximal;
         };
         java.enable = isMaximal;
         ts.enable = isMaximal;
