@@ -57,11 +57,11 @@ in {
       // (
         if config.vim.languages.enableDebugger
         then {
-         "<leader>fdc" = "<cmd> Telescope dap commands<CR>";
-         "<leader>fdo" = "<cmd> Telescope dap configurations<CR>";
-         "<leader>fdl" = "<cmd> Telescope dap list_breakpoints<CR>";
-         "<leader>fdv" = "<cmd> Telescope dap variables<CR>";
-         "<leader>fdf" = "<cmd> Telescope dap frames<CR>";         
+         "<leader>dc" = "<cmd> Telescope dap commands<CR>";
+         "<leader>do" = "<cmd> Telescope dap configurations<CR>";
+         "<leader>dl" = "<cmd> Telescope dap list_breakpoints<CR>";
+         "<leader>dv" = "<cmd> Telescope dap variables<CR>";
+         "<leader>df" = "<cmd> Telescope dap frames<CR>";         
         }
         else {}
       );

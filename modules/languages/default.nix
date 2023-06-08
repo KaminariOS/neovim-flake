@@ -28,6 +28,8 @@ in {
     ./php.nix
     ./terraform.nix
     ./vim.nix
+    ./debugger.nix
+    ./neodev.nix
   ];
 
   options.vim.languages = {
