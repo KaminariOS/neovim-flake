@@ -122,6 +122,12 @@ in {
         then "telescope.load_extension('projects')"
         else ""
       }
+
+      ${
+        if config.vim.languages.enableDebugger
+        then "telescope.load_extension('dap')"
+        else ""
+      }
     '';
   };
 }
