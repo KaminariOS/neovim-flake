@@ -17,7 +17,7 @@ in {
         nvim-dap-virtual-text
         telescope-dap-nvim
         # neodev.nvim 
-      ];
+      ] ++ [pkgs.lldb];
       
       vim.luaConfigRC.debugger = nvim.dag.entryAnywhere ''
         local dap = require('dap')
@@ -61,10 +61,21 @@ in {
 
         dap.configurations.c = dap.configurations.cpp
 
-        dap.configurations.rust = dap.configurations.cpp
         dap.configurations.rust = {
           {
-            -- ... the previous config goes here ...,
+
+            name = 'Launch',
+            type = 'lldb',
+            request = 'launch',
+            program = function()
+              return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+            cwd = "''${workspaceFolder}",
+            stopOnEntry = false,
+            args = {},
+
+            -- runInTerminal = false,
+          },
             initCommands = function()
               -- Find out where to look for the pretty printer Python module
               local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))

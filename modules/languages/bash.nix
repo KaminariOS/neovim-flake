@@ -63,5 +63,40 @@ in {
       vim.lsp.lspconfig.enable = true;
       vim.lsp.lspconfig.sources.bash-lsp = servers.${cfg.lsp.server}.lspConfig;
     })
+
+    (mkIf config.vim.languages.enableDebugger {
+      vim.startPlugins = with pkgs; [
+        bashdb
+      ];
+      vim.luaConfigRC.pythonDebug = nvim.dag.entryAfter ["debugger"] ''
+        require("dap-python").setup("${pkgs.python310Packages.debugpy}/bin/python")
+        dap.adapters.bashdb = {
+          type = 'executable';
+          command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter';
+          name = 'bashdb';
+        }
+        dap.configurations.sh = {
+          {
+            type = 'bashdb';
+            request = 'launch';
+            name = "Launch file";
+            showDebugOutput = true;
+            pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb';
+            pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir';
+            trace = true;
+            file = "''${file}";
+            program = "''${file}";
+            cwd = "''${workspaceFolder}";
+            pathCat = "cat";
+            pathBash = "${pkgs.bash}/bin/bash";
+            pathMkfifo = "mkfifo";
+            pathPkill = "pkill";
+            args = {};
+            env = {};
+            terminalKind = "integrated";
+          }
+        }
+      '';
+    })
   ]);
 }

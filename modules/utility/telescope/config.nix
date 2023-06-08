@@ -58,7 +58,7 @@ in {
         if config.vim.languages.enableDebugger
         then {
          "<leader>fdc" = "<cmd> Telescope dap commands<CR>";
-         "<leader>fdco" = "<cmd> Telescope dap configurations<CR>";
+         "<leader>fdo" = "<cmd> Telescope dap configurations<CR>";
          "<leader>fdl" = "<cmd> Telescope dap list_breakpoints<CR>";
          "<leader>fdv" = "<cmd> Telescope dap variables<CR>";
          "<leader>fdf" = "<cmd> Telescope dap frames<CR>";         
