@@ -81,8 +81,8 @@ in {
             request = 'launch';
             name = "Launch file";
             showDebugOutput = true;
-            pathBashdb = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb';
-            pathBashdbLib = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/extension/bashdb_dir';
+            pathBashdb = "${pkgs.bashdb}/bin/bashdb";
+            pathBashdbLib = "${pkgs.bashdb}/share/bashdb/lib";
             trace = true;
             file = "''${file}";
             program = "''${file}";
