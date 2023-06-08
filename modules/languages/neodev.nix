@@ -16,7 +16,7 @@ in
       -- add any options here, or leave empty to use the default settings
       ${
         if config.vim.languages.enableDebugger
-        then "library = { plugins = { "nvim-dap-ui" }, types = true },"
+        then "library = { plugins = { 'nvim-dap-ui' }, types = true },"
         else ""
       }
     })
