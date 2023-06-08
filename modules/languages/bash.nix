@@ -69,10 +69,9 @@ in {
         bashdb
       ];
       vim.luaConfigRC.pythonDebug = nvim.dag.entryAfter ["debugger"] ''
-        require("dap-python").setup("${pkgs.python310Packages.debugpy}/bin/python")
         dap.adapters.bashdb = {
           type = 'executable';
-          command = vim.fn.stdpath("data") .. '/mason/packages/bash-debug-adapter/bash-debug-adapter';
+          command =  "${pkgs.bashdb}/bin/bashdb";
           name = 'bashdb';
         }
         dap.configurations.sh = {
