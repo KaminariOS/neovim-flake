@@ -26,7 +26,7 @@ in {
 
         dap.adapters.lldb = {
           type = 'executable',
-          command = '${pkgs.lldb}/lldb-vscode', -- adjust as needed, must be absolute path
+          command = '${pkgs.lldb}/bin/lldb-vscode', -- adjust as needed, must be absolute path
           name = 'lldb'
         }
 

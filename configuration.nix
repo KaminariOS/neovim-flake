@@ -53,7 +53,7 @@ inputs: let
         enableFormat = true;
         enableTreesitter = true;
         enableExtraDiagnostics = true;
-        enableDebugger = true;
+        enableDebugger = isMaximal;
 
         nix.enable = true;
         html.enable = isMaximal;
