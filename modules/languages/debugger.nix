@@ -74,8 +74,6 @@ in {
             stopOnEntry = false,
             args = {},
 
-            -- runInTerminal = false,
-          },
             initCommands = function()
               -- Find out where to look for the pretty printer Python module
               local rustc_sysroot = vim.fn.trim(vim.fn.system('rustc --print sysroot'))
