@@ -151,9 +151,16 @@ in {
               "filename",
               color = {bg='none'},
               symbols = {modified = '', readonly = ''},
+              path = 3,        -- 0: Just the filename
+                               -- 1: Relative path
+                               -- 2: Absolute path
+                               -- 3: Absolute path, with tilde as the home directory
+                               -- 4: Filename and parent dir, with tilde as the home directory
             }
           ''
         ];
+          }
+        '';
       };
 
       c = mkOption {
@@ -173,7 +180,7 @@ in {
               symbols = {added = '+', modified = '~', removed = '-'}, -- Changes the diff symbols
               color = {
                 bg='none',
-                fg='lavender'
+                fg= colors.red
               },
             }
           ''
@@ -185,6 +192,10 @@ in {
         description = "active config for: | A | B | C       (X) | Y | Z |";
         default = [
           ''
+        default = [
+        ''
+          {
+            {'searchcount'},
             {
               -- Lsp server name
               function()
@@ -224,6 +235,7 @@ in {
           ''
             {
               "diagnostics",
+              colored = true,
               sources = {'nvim_lsp', 'nvim_diagnostic', 'coc'},
               symbols = {error = '󰅙  ', warn = '  ', info = '  ', hint = '󰌵 '},
               diagnostics_color = {
@@ -232,6 +244,9 @@ in {
                 color_info = { fg = 'cyan' },
               },
             }
+          ''
+          ''
+              symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
           ''
         ];
       };
@@ -243,7 +258,7 @@ in {
           ''
             {
               "fileformat",
-              color = {bg='none', fg='lavender'},
+              color = {bg='none'},
               symbols = {
                 unix = '', -- e712
                 dos = '',  -- e70f
@@ -261,24 +276,25 @@ in {
           ''
             {
               "progress",
-              color = {bg='none', fg='lavender'},
+              color = {bg='none', fg=colors.orange},
             }
             ''
             ''
             {
               "location",
-              color = {bg='none', fg='lavender'},
+              color = {bg='none', fg=colors.yellow},
             }
             ''
             ''
             {
               "branch",
               icon = ' •',
-              separator = {
-                left = '(',
-              },
-              color = {bg='none', fg='lavender'},
-
+              color = {bg='none', fg=colors.blue},
+            },
+            {
+              "datetime",
+              style = "%H:%M",
+              color = {bg='none', fg=colors.green},
             },
           }
         '';

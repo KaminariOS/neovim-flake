@@ -50,6 +50,30 @@ in {
           lualine_z = ${nvim.lua.luaTable (cfg.inactiveSection.z ++ cfg.extraInactiveSection.z)},
         },
         tabline = {},
+        extensions = {
+          ${
+            if (config.vim.filetree.nvimTreeLua.enable)
+            then "\"nvim-tree\","
+            else ""
+          }
+          ${
+            if (config.vim.languages.enableDebugger)
+            then "\"nvim-dap-ui\","
+            else ""
+          }
+
+          ${
+            if (config.vim.terminal.toggleterm.enable)
+            then "\"toggleterm\","
+            else ""
+          }
+
+          ${
+            if (config.vim.lsp.trouble.enable)
+            then "\"trouble\","
+            else ""
+          }
+        },
 
         ${optionalString (breadcrumbsCfg.enable && breadcrumbsCfg.source == "nvim-navic") ''
         winbar = {
