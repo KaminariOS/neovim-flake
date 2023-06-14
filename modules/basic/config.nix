@@ -80,6 +80,9 @@ in {
       nmap <C-e> <cmd>wq<cr> 
       vmap <C-e> <cmd>wq<cr>
       
+      imap <C-S-e> <cmd>q<cr> 
+      nmap <C-S-e> <cmd>q<cr> 
+      vmap <C-S-e> <cmd>q<cr>
 
       set mouse=${cfg.mouseSupport}
       set tabstop=${toString cfg.tabWidth}
