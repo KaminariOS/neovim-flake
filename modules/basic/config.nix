@@ -11,33 +11,18 @@ in {
   config = {
     vim.startPlugins = ["plenary-nvim"] ++ lib.optionals (cfg.spellChecking.enableProgrammingWordList) ["vim-dirtytalk"];
 
-    vim.nmap = mkIf cfg.disableArrows {
-      "<up>" = "<nop>";
-      "<down>" = "<nop>";
-      "<left>" = "<nop>";
-      "<right>" = "<nop>";
+    vim.maps.normal = mkIf cfg.mapLeaderSpace {
+    "<space>" = { action = "<nop>"; noremap = false;};
+    "<leader><leader>" = { action = "<cmd>bn<cr>"; noremap = false;};
+    "<leader>bd" = { action = "<cmd>bd<cr>"; noremap = false; };
     };
 
-    vim.imap = mkIf cfg.disableArrows {
-      "<up>" = "<nop>";
-      "<down>" = "<nop>";
-      "<left>" = "<nop>";
-      "<right>" = "<nop>";
+    vim.maps.visual = mkIf cfg.mapLeaderSpace {
+    "<space>" = { action = "<nop>"; noremap = false;};
+    "<leader><leader>" = { action = "<cmd>bn<cr>"; noremap = false;};
+    "<leader>bd" = { action = "<cmd>bd<cr>"; noremap = false;};
     };
 
-    vim.nnoremap = mkIf cfg.mapLeaderSpace {
-    "<space>" = "<nop>";
-    "<leader><leader>" = "<cmd>bn<cr>";
-    "<leader>bd" = "<cmd>bd<cr>";
-    };
-
-    vim.vnoremap = mkIf cfg.mapLeaderSpace {
-    "<space>" = "<nop>";
-    "<leader><leader>" = "<cmd>bn<cr>";
-    "<leader>bd" = "<cmd>bd<cr>";
-    };
-    vim.tnoremap = mkIf cfg.mapLeaderSpace {
-    };
     vim.configRC.basic = nvim.dag.entryAfter ["globalsScript"] ''
       ${optionalString cfg.debugMode.enable ''
         " Debug mode settings

@@ -70,7 +70,6 @@ inputs: let
         toml.enable = isMaximal;
         cmake.enable = isMaximal;
         json.enable = isMaximal;
-        svelte.enable = isMaximal;
         rust = {
           enable = isMaximal;
           crates.enable = isMaximal;

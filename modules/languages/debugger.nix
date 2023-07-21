@@ -19,15 +19,15 @@ in {
         # neodev.nvim 
       ] ++ [pkgs.lldb];
       
-      vim.nnoremap = {
-         "<leader>db" = "<cmd>lua require'dap'.toggle_breakpoint()<CR>";         
-         "<leader>dr" = "<cmd>lua require'dap'.continue()<CR>";         
-         "<leader>ds" = "<cmd>lua require'dap'.step_over()<CR>";         
-         "<leader>di" = "<cmd>lua require'dap'.step_into()<CR>";         
-         # "<leader>de" = "<cmd>lua require'dap'.repl.toggle()<CR>";         
-         "<leader>du" = "<cmd>lua require'dapui'.toggle()<CR>";         
-         "<leader>de" = "<cmd>lua require'dapui'.eval()<CR>";         
-      };
+#      vim.nnoremap = {
+#         "<leader>db" = "<cmd>lua require'dap'.toggle_breakpoint()<CR>";
+#         "<leader>dr" = "<cmd>lua require'dap'.continue()<CR>";
+#         "<leader>ds" = "<cmd>lua require'dap'.step_over()<CR>";
+#         "<leader>di" = "<cmd>lua require'dap'.step_into()<CR>";
+#         # "<leader>de" = "<cmd>lua require'dap'.repl.toggle()<CR>";
+#         "<leader>du" = "<cmd>lua require'dapui'.toggle()<CR>";
+#         "<leader>de" = "<cmd>lua require'dapui'.eval()<CR>";
+#      };
       vim.luaConfigRC.debugger = nvim.dag.entryAnywhere ''
         local dap = require('dap')
         require("dapui").setup()
