@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) addDescriptionsToMappings mkMerge mkIf mapAttrs nvim mkSetLuaBinding optionalString;
@@ -14,14 +15,61 @@
 in {
   config = mkMerge [
     (mkIf cfg.enable {
-      vim.startPlugins = ["nvim-dap"];
+      vim.startPlugins = [
+      "nvim-dap"
+      ] ++ 
+      (with pkgs.vimPlugins; [
+        nvim-dap
+        nvim-dap-ui
+        nvim-dap-virtual-text
+        telescope-dap-nvim
+        # neodev.nvim 
+      ] ++ [pkgs.lldb]);
 
       vim.luaConfigRC =
         {
           # TODO customizable keymaps
           nvim-dap = nvim.dag.entryAnywhere ''
             local dap = require("dap")
+            require("nvim-dap-virtual-text").setup()
             vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "ErrorMsg", linehl = "", numhl = "" })
+
+            dap.adapters.lldb = {
+              type = 'executable',
+              command = '${pkgs.lldb}/bin/lldb-vscode', -- adjust as needed, must be absolute path
+              name = 'lldb'
+            }
+
+            dap.configurations.cpp = {
+              {
+                name = 'Launch',
+                type = 'lldb',
+                request = 'launch',
+                program = function()
+                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = "''${workspaceFolder}",
+                stopOnEntry = false,
+                args = {},
+
+                -- 💀
+                -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+                --
+                --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+                --
+                -- Otherwise you might get the following error:
+                --
+                --    Error on launch: Failed to attach to the target process
+                --
+                -- But you should be aware of the implications:
+                -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+                -- runInTerminal = false,
+              },
+            }
+
+            -- If you want to use this for Rust and C, add something like this:
+
+            dap.configurations.c = dap.configurations.cpp
           '';
         }
         // mapAttrs (_: v: (nvim.dag.entryAfter ["nvim-dap"] v)) cfg.sources;

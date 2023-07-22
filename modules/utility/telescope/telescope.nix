@@ -29,7 +29,7 @@ in {
 
       dapCommands = mkMappingOption "Dap commands[Telescope]" "<leader>dc";
       dapConfigurations = mkMappingOption "Dap configurations[Telescope]" "<leader>do";
-      dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>db"; 
+      dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>dl"; 
       dapListVariables = mkMappingOption "Dap variables[Telescope]" "<leader>dv"; 
       dapListFrames = mkMappingOption "Dap frames[Telescope]" "<leader>df"; 
     };
