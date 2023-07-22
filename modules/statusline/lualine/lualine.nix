@@ -159,8 +159,6 @@ in {
             }
           ''
         ];
-          }
-        '';
       };
 
       c = mkOption {
@@ -192,8 +190,6 @@ in {
         description = "active config for: | A | B | C       (X) | Y | Z |";
         default = [
           ''
-        default = [
-        ''
           {
             {'searchcount'},
             {
@@ -297,9 +293,7 @@ in {
               color = {bg='none', fg=colors.green},
             },
           }
-        '';
-            }
-          ''
+        ''
         ];
       };
     };
