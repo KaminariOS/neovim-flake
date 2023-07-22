@@ -125,8 +125,6 @@ in {
               "mode",
               icons_enabled = true,
               separator = {
-                left = '▎',
-                right = ''
               },
             }
           ''

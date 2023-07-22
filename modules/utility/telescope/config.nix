@@ -43,6 +43,15 @@ in {
         (mkSetBinding mappings.diagnostics "<cmd> Telescope diagnostics<CR>")
       ]))
 
+      (mkIf config.vim.languages.enableDebugger (mkMerge [
+        (mkSetBinding mappings.dapCommands "<cmd> Telescope dap commands<CR>")
+        (mkSetBinding mappings.dapConfigurations "<cmd> Telescope dap configurations<CR>")
+        (mkSetBinding mappings.dapListVariables "<cmd> Telescope dap variables<CR>")
+        (mkSetBinding mappings.dapListFrames "<cmd> Telescope dap frames<CR>")
+        (mkSetBinding mappings.dapListBreakpoints "<cmd> Telescope dap breakpoints<CR>")
+        ]
+        )
+      )
       (
         mkIf config.vim.treesitter.enable
         (mkSetBinding mappings.treesitter "<cmd> Telescope treesitter<CR>")
