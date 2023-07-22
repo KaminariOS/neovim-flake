@@ -28,8 +28,8 @@ in {
       treesitter = mkMappingOption "Treesitter [Telescope]" "<leader>fs";
 
       dapCommands = mkMappingOption "Dap commands[Telescope]" "<leader>dc";
-      dapConfigurations = mkMappingOption "Dap commands[Telescope]" "<leader>do";
-      dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>dl"; 
+      dapConfigurations = mkMappingOption "Dap configurations[Telescope]" "<leader>do";
+      dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>db"; 
       dapListVariables = mkMappingOption "Dap variables[Telescope]" "<leader>dv"; 
       dapListFrames = mkMappingOption "Dap frames[Telescope]" "<leader>df"; 
     };
