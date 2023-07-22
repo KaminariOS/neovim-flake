@@ -15,7 +15,7 @@ in
     require("neodev").setup({
       -- add any options here, or leave empty to use the default settings
       ${
-        if config.vim.languages.enableDebugger
+        if config.vim.debugger.nvim-dap.enable
         then "library = { plugins = { 'nvim-dap-ui' }, types = true },"
         else ""
       }

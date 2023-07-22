@@ -43,7 +43,7 @@ in {
         (mkSetBinding mappings.diagnostics "<cmd> Telescope diagnostics<CR>")
       ]))
 
-      (mkIf config.vim.languages.enableDebugger (mkMerge [
+      (mkIf config.vim.debugger.nvim-dap.enable (mkMerge [
         (mkSetBinding mappings.dapCommands "<cmd> Telescope dap commands<CR>")
         (mkSetBinding mappings.dapConfigurations "<cmd> Telescope dap configurations<CR>")
         (mkSetBinding mappings.dapListVariables "<cmd> Telescope dap variables<CR>")
@@ -132,7 +132,7 @@ in {
       }
 
       ${
-        if config.vim.languages.enableDebugger
+        if config.vim.debugger.nvim-dap.enable
         then "telescope.load_extension('dap')"
         else ""
       }

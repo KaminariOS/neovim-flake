@@ -144,7 +144,7 @@ in {
         rt.setup(rustopts)
       '';
     })
-    (mkIf config.vim.languages.enableDebugger {
+    (mkIf config.vim.debugger.nvim-dap.enable {
       vim.luaConfigRC.rustDebug = nvim.dag.entryAfter ["debugger"] ''
         dap.configurations.rust = {
           {

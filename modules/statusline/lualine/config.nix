@@ -57,7 +57,7 @@ in {
             else ""
           }
           ${
-            if (config.vim.languages.enableDebugger)
+            if (config.vim.debugger.nvim-dap.enable)
             then "\"nvim-dap-ui\","
             else ""
           }

@@ -27,7 +27,7 @@ in {
 
       treesitter = mkMappingOption "Treesitter [Telescope]" "<leader>fs";
 
-      dapCommands = mkMappingOption "Dap commands[Telescope]" "<leader>dc";
+      dapCommands = mkMappingOption "Dap commands[Telescope]" "<leader>dm";
       dapConfigurations = mkMappingOption "Dap configurations[Telescope]" "<leader>do";
       dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>dl"; 
       dapListVariables = mkMappingOption "Dap variables[Telescope]" "<leader>dv"; 

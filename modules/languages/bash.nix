@@ -64,7 +64,7 @@ in {
       vim.lsp.lspconfig.sources.bash-lsp = servers.${cfg.lsp.server}.lspConfig;
     })
 
-    (mkIf config.vim.languages.enableDebugger {
+    (mkIf config.vim.debugger.nvim-dap.enable {
       vim.startPlugins = with pkgs; [
         bashdb
       ];
