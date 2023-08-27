@@ -34,7 +34,7 @@ inputs: let
         lspkind.enable = false;
         lightbulb.enable = true;
         lspsaga.enable = false;
-        nvimCodeActionMenu.enable = isMaximal;
+        nvimCodeActionMenu.enable = true;
         trouble.enable = true;
         lspSignature.enable = true;
         lsplines.enable = isMaximal;
@@ -57,11 +57,11 @@ inputs: let
         nix.enable = true;
         html.enable = isMaximal;
         clang = {
-          enable = isMaximal;
+          enable = true;
           lsp.server = "clangd";
         };
         sql.enable = isMaximal;
-        bash.enable = isMaximal;
+        bash.enable = true;
         vim.enable = isMaximal;
         # tex.enable = true;
         yaml.enable = isMaximal;
@@ -69,15 +69,15 @@ inputs: let
         cmake.enable = isMaximal;
         json.enable = isMaximal;
         rust = {
-          enable = isMaximal;
-          crates.enable = isMaximal;
+          enable = true;
+          crates.enable = true;
         };
         java.enable = isMaximal;
         ts.enable = isMaximal;
         svelte.enable = isMaximal;
         go.enable = isMaximal;
         zig.enable = isMaximal;
-        python.enable = isMaximal;
+        python.enable = true;
         dart.enable = isMaximal;
         elixir.enable = false;
         bash.enable = isMaximal;
@@ -90,7 +90,7 @@ inputs: let
         nvimWebDevicons.enable = true;
         scrollBar.enable = true;
         smoothScroll.enable = true;
-        cellularAutomaton.enable = false;
+        cellularAutomaton.enable = true;
         fidget-nvim.enable = true;
         highlight-undo.enable = true;
 
@@ -159,12 +159,12 @@ inputs: let
 
       vim.minimap = {
         minimap-vim.enable = false;
-        codewindow.enable = isMaximal; # lighter, faster, and uses lua for configuration
+        codewindow.enable = true; # lighter, faster, and uses lua for configuration
       };
 
       vim.dashboard = {
         dashboard-nvim.enable = false;
-        alpha.enable = isMaximal;
+        alpha.enable = true;
       };
 
       vim.notify = {
@@ -172,7 +172,7 @@ inputs: let
       };
 
       vim.projects = {
-        project-nvim.enable = isMaximal;
+        project-nvim.enable = true;
       };
 
       vim.utility = {
@@ -190,7 +190,7 @@ inputs: let
       vim.notes = {
         obsidian.enable = false; # FIXME neovim fails to build if obsidian is enabled
         orgmode.enable = false;
-        mind-nvim.enable = isMaximal;
+        mind-nvim.enable = true;
         todo-comments.enable = true;
       };
 
@@ -226,12 +226,12 @@ inputs: let
       vim.assistant = {
         copilot = {
           enable = isMaximal;
-          cmp.enable = isMaximal;
+          cmp.enable = true;
         };
       };
 
       vim.session = {
-        nvim-session-manager.enable = false;
+        nvim-session-manager.enable = true;
       };
 
       vim.gestures = {
