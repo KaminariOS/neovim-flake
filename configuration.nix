@@ -14,7 +14,7 @@ inputs: let
     };
 
   tidalConfig = {
-    config.vim.languages.tidal.enable = true;
+    config.vim.languages.tidal.enable = !true;
   };
 
   mainConfig = isMaximal: {
@@ -64,7 +64,6 @@ inputs: let
         bash.enable = isMaximal;
         vim.enable = isMaximal;
         # tex.enable = true;
-        java.enable = isMaximal;
         yaml.enable = isMaximal;
         toml.enable = isMaximal;
         cmake.enable = isMaximal;

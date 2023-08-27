@@ -9,7 +9,7 @@
 
   nixConfig = mainConfig false;
   maximalConfig = mainConfig true;
-  tidalConfig = {config.vim.tidal.enable = true;};
+  tidalConfig = {config.vim.tidal.enable = !true;};
 in {
   flake.overlays.default = _final: prev: {
     inherit neovimConfiguration;
