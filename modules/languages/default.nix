@@ -29,6 +29,7 @@ in {
     ./terraform.nix
     ./vim.nix
     ./neodev.nix
+    ./lua.nix
   ];
 
   options.vim.languages = {
