@@ -59,8 +59,10 @@ in {
 
       (
         mkIf config.vim.projects.project-nvim.enable
-        (mkSetBinding mappings.findProjects "<cmd Telescope projects<CR>")
+        (mkSetBinding mappings.findProjects "<cmd> Telescope projects<CR>")
       )
+
+        (mkSetBinding mappings.aerial "<cmd> Telescope aerial<CR>")
     ];
 
     vim.luaConfigRC.telescope = nvim.dag.entryAnywhere ''
