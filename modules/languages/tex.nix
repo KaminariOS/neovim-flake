@@ -31,7 +31,7 @@ in {
         type = types.bool;
         default = config.vim.languages.enableTreesitter;
       };
-      package = nvim.types.mkGrammarOption pkgs "tex";
+      package = nvim.types.mkGrammarOption pkgs "latex";
     };
 
     lsp = {

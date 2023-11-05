@@ -63,7 +63,7 @@ inputs: let
         sql.enable = isMaximal;
         bash.enable = true;
         vim.enable = isMaximal;
-        # tex.enable = true;
+        tex.enable = true;
         yaml.enable = isMaximal;
         toml.enable = isMaximal;
         cmake.enable = isMaximal;
