@@ -64,7 +64,8 @@ in {
 
       vim.autocomplete.sources = {"crates" = "[Crates]";};
       vim.luaConfigRC.rust-crates = nvim.dag.entryAnywhere ''
-        require('crates').setup {
+        local crates = require('crates')
+        crates.setup {
           null_ls = {
             enabled = ${boolToString cfg.crates.codeActions},
             name = "crates.nvim",
