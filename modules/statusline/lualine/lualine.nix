@@ -141,7 +141,7 @@ in {
               colored = true,
               icon_only = true,
               icon = { align = 'left' },
-              color = {bg='${none}', fg='lavender'},
+              color = {bg='none', fg='lavender'},
             }
           ''
           ''
@@ -188,7 +188,6 @@ in {
         description = "active config for: | A | B | C       (X) | Y | Z |";
         default = [
           ''
-          {
             {'searchcount'},
             {
               -- Lsp server name
@@ -258,9 +257,8 @@ in {
                 dos = '',  -- e70f
                 mac = '',  -- e711
               },
-            },
-          }
-        '';
+            }
+        ''];
       };
 
       z = mkOption {
