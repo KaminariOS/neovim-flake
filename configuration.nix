@@ -80,7 +80,6 @@ inputs: let
         python.enable = true;
         dart.enable = isMaximal;
         elixir.enable = false;
-        bash.enable = isMaximal;
         terraform.enable = isMaximal;
         markdown.enable = isMaximal;
       };
