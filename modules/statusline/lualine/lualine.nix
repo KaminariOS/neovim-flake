@@ -239,7 +239,9 @@ in {
             }
           ''
           ''
+          {
               symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+            }
           ''
         ];
       };
@@ -282,13 +284,14 @@ in {
               "branch",
               icon = ' •',
               color = {bg='none', fg=colors.blue},
-            },
+            }
+            ''
+            ''
             {
               "datetime",
               style = "%H:%M",
               color = {bg='none', fg=colors.green},
-            },
-          }
+            }
         ''
         ];
       };
