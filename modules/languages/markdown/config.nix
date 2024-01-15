@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) nvim mkIf mkMerge;
+  inherit (lib) nvim mkIf mkMerge mkOption types;
 
   cfg = config.vim.languages.markdown;
   defaultServer = "marksman";
@@ -20,7 +20,7 @@
     };
   };
 in {
-  
+
   options.vim.languages.markdown = {
     lsp = {
       enable = mkOption {
