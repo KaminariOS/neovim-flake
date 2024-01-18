@@ -7,10 +7,10 @@ in {
     mappings = {
       goToDefinition =
         mkMappingOption "Go to definition"
-        "<leader>lgd";
+        "gd";
       goToDeclaration =
         mkMappingOption "Go to declaration"
-        "<leader>lgD";
+        "gD";
       goToType =
         mkMappingOption "Go to type"
         "<leader>lgt";
