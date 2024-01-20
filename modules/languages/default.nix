@@ -17,7 +17,7 @@ in {
     ./ts.nix
     ./zig.nix
     ./html.nix
-     ./tex.nix
+    ./tex.nix
     ./toml.nix
     ./svelte.nix
     ./json.nix

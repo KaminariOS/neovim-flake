@@ -29,10 +29,9 @@ in {
 
       dapCommands = mkMappingOption "Dap commands[Telescope]" "<leader>dm";
       dapConfigurations = mkMappingOption "Dap configurations[Telescope]" "<leader>do";
-      dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>dl"; 
-      dapListVariables = mkMappingOption "Dap variables[Telescope]" "<leader>dv"; 
-      dapListFrames = mkMappingOption "Dap frames[Telescope]" "<leader>df"; 
-
+      dapListBreakpoints = mkMappingOption "Dap breakpoints[Telescope]" "<leader>dl";
+      dapListVariables = mkMappingOption "Dap variables[Telescope]" "<leader>dv";
+      dapListFrames = mkMappingOption "Dap frames[Telescope]" "<leader>df";
 
       aerial = mkMappingOption "Aerial [Telescope]" "<leader>fa";
     };

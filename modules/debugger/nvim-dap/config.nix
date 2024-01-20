@@ -15,16 +15,19 @@
 in {
   config = mkMerge [
     (mkIf cfg.enable {
-      vim.startPlugins = [
-      "nvim-dap"
-      ] ++ 
-      (with pkgs.vimPlugins; [
-        nvim-dap
-        nvim-dap-ui
-        nvim-dap-virtual-text
-        telescope-dap-nvim
-        # neodev.nvim 
-      ] ++ [pkgs.lldb]);
+      vim.startPlugins =
+        [
+          "nvim-dap"
+        ]
+        ++ (with pkgs.vimPlugins;
+          [
+            nvim-dap
+            nvim-dap-ui
+            nvim-dap-virtual-text
+            telescope-dap-nvim
+            # neodev.nvim
+          ]
+          ++ [pkgs.lldb]);
 
       vim.luaConfigRC =
         {

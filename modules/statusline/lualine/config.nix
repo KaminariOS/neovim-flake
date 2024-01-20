@@ -65,27 +65,27 @@ in {
         tabline = {},
         extensions = {
           ${
-            if (config.vim.filetree.nvimTree.enable)
-            then "\"nvim-tree\","
-            else ""
-          }
+        if (config.vim.filetree.nvimTree.enable)
+        then "\"nvim-tree\","
+        else ""
+      }
           ${
-            if (config.vim.debugger.nvim-dap.enable)
-            then "\"nvim-dap-ui\","
-            else ""
-          }
+        if (config.vim.debugger.nvim-dap.enable)
+        then "\"nvim-dap-ui\","
+        else ""
+      }
 
           ${
-            if (config.vim.terminal.toggleterm.enable)
-            then "\"toggleterm\","
-            else ""
-          }
+        if (config.vim.terminal.toggleterm.enable)
+        then "\"toggleterm\","
+        else ""
+      }
 
           ${
-            if (config.vim.lsp.trouble.enable)
-            then "\"trouble\","
-            else ""
-          }
+        if (config.vim.lsp.trouble.enable)
+        then "\"trouble\","
+        else ""
+      }
         },
 
         ${optionalString (breadcrumbsCfg.enable && breadcrumbsCfg.source == "nvim-navic") ''

@@ -21,7 +21,6 @@
     };
   };
 in {
-
   options.vim.languages.markdown = {
     lsp = {
       enable = mkOption {
@@ -67,7 +66,7 @@ in {
         require('glow').setup({
           -- your override config
         })
-        '';
+      '';
     })
   ]);
 }

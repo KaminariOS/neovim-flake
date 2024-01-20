@@ -62,9 +62,9 @@ in {
         ];
 
         vim.luaConfigRC.gitsigns = nvim.dag.entryAnywhere ''
-require('gitsigns').setup {
-          current_line_blame = true,
-  }
+          require('gitsigns').setup {
+                    current_line_blame = true,
+            }
         '';
       }
 

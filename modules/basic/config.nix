@@ -12,15 +12,33 @@ in {
     vim.startPlugins = ["plenary-nvim"] ++ lib.optionals (cfg.spellChecking.enableProgrammingWordList) ["vim-dirtytalk"];
 
     vim.maps.normal = mkIf cfg.mapLeaderSpace {
-    "<space>" = { action = "<nop>"; noremap = false;};
-    "<leader><leader>" = { action = "<cmd>bn<cr>"; noremap = false;};
-    "<leader>bd" = { action = "<cmd>bd<cr>"; noremap = false; };
+      "<space>" = {
+        action = "<nop>";
+        noremap = false;
+      };
+      "<leader><leader>" = {
+        action = "<cmd>bn<cr>";
+        noremap = false;
+      };
+      "<leader>bd" = {
+        action = "<cmd>bd<cr>";
+        noremap = false;
+      };
     };
 
     vim.maps.visual = mkIf cfg.mapLeaderSpace {
-    "<space>" = { action = "<nop>"; noremap = false;};
-    "<leader><leader>" = { action = "<cmd>bn<cr>"; noremap = false;};
-    "<leader>bd" = { action = "<cmd>bd<cr>"; noremap = false;};
+      "<space>" = {
+        action = "<nop>";
+        noremap = false;
+      };
+      "<leader><leader>" = {
+        action = "<cmd>bn<cr>";
+        noremap = false;
+      };
+      "<leader>bd" = {
+        action = "<cmd>bd<cr>";
+        noremap = false;
+      };
     };
 
     vim.configRC.basic = nvim.dag.entryAfter ["globalsScript"] ''
@@ -61,12 +79,12 @@ in {
       noremap <C-Up> <cmd>resize +3<CR>
       noremap <C-Down> <cmd>resize -3<CR>
 
-      imap <C-e> <cmd>wq<cr> 
-      nmap <C-e> <cmd>wq<cr> 
+      imap <C-e> <cmd>wq<cr>
+      nmap <C-e> <cmd>wq<cr>
       vmap <C-e> <cmd>wq<cr>
-      
-      imap <C-S-e> <cmd>q<cr> 
-      nmap <C-S-e> <cmd>q<cr> 
+
+      imap <C-S-e> <cmd>q<cr>
+      nmap <C-S-e> <cmd>q<cr>
       vmap <C-S-e> <cmd>q<cr>
 
       set mouse=${cfg.mouseSupport}

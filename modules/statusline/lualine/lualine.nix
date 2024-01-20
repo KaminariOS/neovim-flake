@@ -120,7 +120,7 @@ in {
         type = with types; listOf str;
         description = "active config for: | (A) | B | C       X | Y | Z |";
         default = [
-        ''
+          ''
             {
               "mode",
               icons_enabled = true,
@@ -239,9 +239,9 @@ in {
             }
           ''
           ''
-          {
-              symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
-            }
+            {
+                symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '}
+              }
           ''
         ];
       };
@@ -260,7 +260,8 @@ in {
                 mac = '',  -- e711
               },
             }
-        ''];
+          ''
+        ];
       };
 
       z = mkOption {
@@ -272,27 +273,27 @@ in {
               "progress",
               color = {bg='none', fg=colors.orange},
             }
-            ''
-            ''
+          ''
+          ''
             {
               "location",
               color = {bg='none', fg=colors.yellow},
             }
-            ''
-            ''
+          ''
+          ''
             {
               "branch",
               icon = ' •',
               color = {bg='none', fg=colors.blue},
             }
-            ''
-            ''
+          ''
+          ''
             {
               "datetime",
               style = "%H:%M",
               color = {bg='none', fg=colors.green},
             }
-        ''
+          ''
         ];
       };
     };

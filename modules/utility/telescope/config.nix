@@ -13,11 +13,13 @@
   mappings = addDescriptionsToMappings cfg.mappings mappingDefinitions;
 in {
   config = mkIf (cfg.enable) {
-    vim.startPlugins = [
-      "telescope"
-    ] ++ (with pkgs.vimPlugins; [
-    telescope-live-grep-args-nvim
-]);
+    vim.startPlugins =
+      [
+        "telescope"
+      ]
+      ++ (with pkgs.vimPlugins; [
+        telescope-live-grep-args-nvim
+      ]);
 
     vim.maps.normal = mkMerge [
       (mkSetBinding mappings.findFiles "<cmd> Telescope find_files<CR>")
@@ -43,13 +45,15 @@ in {
         (mkSetBinding mappings.diagnostics "<cmd> Telescope diagnostics<CR>")
       ]))
 
-      (mkIf config.vim.debugger.nvim-dap.enable (mkMerge [
-        (mkSetBinding mappings.dapCommands "<cmd> Telescope dap commands<CR>")
-        (mkSetBinding mappings.dapConfigurations "<cmd> Telescope dap configurations<CR>")
-        (mkSetBinding mappings.dapListVariables "<cmd> Telescope dap variables<CR>")
-        (mkSetBinding mappings.dapListFrames "<cmd> Telescope dap frames<CR>")
-        (mkSetBinding mappings.dapListBreakpoints "<cmd> Telescope dap breakpoints<CR>")
-        ]
+      (
+        mkIf config.vim.debugger.nvim-dap.enable (
+          mkMerge [
+            (mkSetBinding mappings.dapCommands "<cmd> Telescope dap commands<CR>")
+            (mkSetBinding mappings.dapConfigurations "<cmd> Telescope dap configurations<CR>")
+            (mkSetBinding mappings.dapListVariables "<cmd> Telescope dap variables<CR>")
+            (mkSetBinding mappings.dapListFrames "<cmd> Telescope dap frames<CR>")
+            (mkSetBinding mappings.dapListBreakpoints "<cmd> Telescope dap breakpoints<CR>")
+          ]
         )
       )
       (
@@ -62,7 +66,7 @@ in {
         (mkSetBinding mappings.findProjects "<cmd> Telescope projects<CR>")
       )
 
-        (mkSetBinding mappings.aerial "<cmd> Telescope aerial<CR>")
+      (mkSetBinding mappings.aerial "<cmd> Telescope aerial<CR>")
     ];
 
     vim.luaConfigRC.telescope = nvim.dag.entryAnywhere ''
