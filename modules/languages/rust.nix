@@ -65,12 +65,27 @@ in {
       vim.autocomplete.sources = {"crates" = "[Crates]";};
       vim.luaConfigRC.rust-crates = nvim.dag.entryAnywhere ''
         local crates = require('crates')
+        local opts = { silent = true }
         crates.setup {
           null_ls = {
             enabled = ${boolToString cfg.crates.codeActions},
             name = "crates.nvim",
           }
         }
+        local function show_documentation()
+            local filetype = vim.bo.filetype
+            if filetype == "vim" or filetype == "help" then
+                vim.cmd('h '..vim.fn.expand('<cword>'))
+            elseif filetype == "man" then
+                vim.cmd('Man '..vim.fn.expand('<cword>'))
+            elseif vim.fn.expand('%:t') == 'Cargo.toml' and require('crates').popup_available() then
+                crates.show_popup()
+            else
+                vim.lsp.buf.hover()
+            end
+        end
+        vim.keymap.set("n", "<leader>cf", crates.show_features_popup, opts)
+        vim.keymap.set('n', 'K', show_documentation, opts)
       '';
     })
     (mkIf cfg.treesitter.enable {
