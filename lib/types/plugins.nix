@@ -39,7 +39,6 @@ with lib; let
     "sqls-nvim"
     "glow-nvim"
     "telescope"
-    "rust-tools"
     "onedark"
     "nightfox"
     "catppuccin"

@@ -166,18 +166,18 @@ in {
           ''
             {
               "diff",
-              colored = false,
+              colored = true,
               diff_color = {
                 -- Same color values as the general color option can be used here.
-                added    = 'DiffAdd',    -- Changes the diff's added color
-                modified = 'DiffChange', -- Changes the diff's modified color
-                removed  = 'DiffDelete', -- Changes the diff's removed color you
+                added = { fg = "#99c794", bg='none'},
+                modified = { fg = "#5bb7b8",bg='none'},
+                removed = { fg = "#ec5f67", bg='none'},
               },
               symbols = {added = '+', modified = '~', removed = '-'}, -- Changes the diff symbols
-              color = {
-                bg='none',
-                fg= colors.red
-              },
+              -- color = {
+              -- bg='none',
+                -- fg= colors.red
+              -- },
             }
           ''
         ];
