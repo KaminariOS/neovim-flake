@@ -125,6 +125,7 @@ in {
 
         rust_on_attach = function(client, bufnr)
           default_on_attach(client, bufnr)
+          vim.lsp.inlay_hint(bufnr, true)
           local opts = { noremap=true, silent=true, buffer = bufnr }
           ${optionalString cfg.dap.enable ''
           vim.keymap.set(
@@ -141,6 +142,28 @@ in {
           )
         ''}
         end
+
+        vim.g.rustaceanvim = {
+          -- Plugin configuration
+          tools = {
+          },
+          -- LSP configuration
+          server = {
+            on_attach = rust_on_attach,
+            cmd = function()
+              return {"${cfg.lsp.package}/bin/rust-analyzer"}
+            end,
+            settings = {
+              -- rust-analyzer language server configuration
+              ['rust-analyzer'] = {
+
+              },
+            },
+          },
+          -- DAP configuration
+          dap = {
+          },
+        }
         local rustopts = {
           tools = {
             autoSetHints = true,
