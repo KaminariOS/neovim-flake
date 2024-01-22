@@ -54,6 +54,9 @@ in {
   };
 
   config = mkIf cfg.enable (mkMerge [
+    (mkIf cfg.lsp.enable {
+      vim.startPlugins = with pkgs.vimPlugins; [vim-latex-live-preview];
+    })
     (mkIf cfg.treesitter.enable {
       vim.treesitter.enable = true;
       vim.treesitter.grammars = [cfg.treesitter.package];
