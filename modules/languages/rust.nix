@@ -64,7 +64,6 @@ in {
 
       vim.autocomplete.sources = {"crates" = "[Crates]";};
 
-
       vim.maps.normal = mkMerge [
         (mkBinding "<leader>cf" ":lua require('crates').show_features_popup()<cr>" "[Crates]Show features popup")
         (mkBinding "<leader>cu" ":lua require('crates').update_crate()<cr>" "[Crates]Update crate")
@@ -100,12 +99,15 @@ in {
       vim.treesitter.grammars = [cfg.treesitter.package];
     })
     (mkIf (cfg.lsp.enable || cfg.dap.enable) {
-      vim.startPlugins = (
-        # with pkgs.vimPlugins;
-        [
-          pkgs.vimPlugins.lsp-inlayhints-nvim
-          "rustaceanvim"
-      ]) ++ optionals cfg.dap.enable [cfg.dap.package];
+      vim.startPlugins =
+        (
+          # with pkgs.vimPlugins;
+          [
+            pkgs.vimPlugins.lsp-inlayhints-nvim
+            "rustaceanvim"
+          ]
+        )
+        ++ optionals cfg.dap.enable [cfg.dap.package];
 
       vim.maps.normal = mkMerge [
         (mkBinding "<leader>rm" ":RustLsp expandMacro<CR>" "[Rust]expand_macro")
@@ -124,28 +126,28 @@ in {
 
       vim.lsp.lspconfig.enable = true;
       vim.lsp.lspconfig.sources.rust-lsp = ''
-        vim.g.cargo_shell_command_runner = '!'
+                vim.g.cargo_shell_command_runner = '!'
 
-        require("lsp-inlayhints").setup()
-        vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = "LspAttach_inlayhints",
-  callback = function(args)
-    if not (args.data and args.data.client_id) then
-      return
-    end
+                require("lsp-inlayhints").setup()
+                vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+        vim.api.nvim_create_autocmd("LspAttach", {
+          group = "LspAttach_inlayhints",
+          callback = function(args)
+            if not (args.data and args.data.client_id) then
+              return
+            end
 
-    local bufnr = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    require("lsp-inlayhints").on_attach(client, bufnr)
-  end,
-})
+            local bufnr = args.buf
+            local client = vim.lsp.get_client_by_id(args.data.client_id)
+            require("lsp-inlayhints").on_attach(client, bufnr)
+          end,
+        })
 
-        rust_on_attach = function(client, bufnr)
-          default_on_attach(client, bufnr)
-          vim.lsp.inlay_hint(bufnr, true)
-          local opts = { noremap=true, silent=true, buffer = bufnr }
-          ${optionalString cfg.dap.enable ''
+                rust_on_attach = function(client, bufnr)
+                  default_on_attach(client, bufnr)
+                  vim.lsp.inlay_hint(bufnr, true)
+                  local opts = { noremap=true, silent=true, buffer = bufnr }
+                  ${optionalString cfg.dap.enable ''
           vim.keymap.set(
             "n", "${config.vim.debugger.nvim-dap.mappings.continue}",
             function()
@@ -159,51 +161,51 @@ vim.api.nvim_create_autocmd("LspAttach", {
             opts
           )
         ''}
-        end
+                end
 
-        vim.g.rustaceanvim = {
-          -- Plugin configuration
-          tools = {
-          },
-          -- LSP configuration
-          server = {
-            on_attach = rust_on_attach,
-            cmd = function()
-              return {"${cfg.lsp.package}/bin/rust-analyzer"}
-            end,
-            settings = {
-              -- rust-analyzer language server configuration
-              ['rust-analyzer'] = {
+                vim.g.rustaceanvim = {
+                  -- Plugin configuration
+                  tools = {
+                  },
+                  -- LSP configuration
+                  server = {
+                    on_attach = rust_on_attach,
+                    cmd = function()
+                      return {"${cfg.lsp.package}/bin/rust-analyzer"}
+                    end,
+                    settings = {
+                      -- rust-analyzer language server configuration
+                      ['rust-analyzer'] = {
 
-              },
-            },
-          },
-          -- DAP configuration
-          dap = {
-          },
-        }
-        local rustopts = {
-          tools = {
-            autoSetHints = true,
-            hover_with_actions = false,
-            inlay_hints = {
-              only_current_line = false,
-            }
-          },
-          server = {
-            capabilities = capabilities,
-            on_attach = rust_on_attach,
-            cmd = ${
+                      },
+                    },
+                  },
+                  -- DAP configuration
+                  dap = {
+                  },
+                }
+                local rustopts = {
+                  tools = {
+                    autoSetHints = true,
+                    hover_with_actions = false,
+                    inlay_hints = {
+                      only_current_line = false,
+                    }
+                  },
+                  server = {
+                    capabilities = capabilities,
+                    on_attach = rust_on_attach,
+                    cmd = ${
           if isList cfg.lsp.package
           then nvim.lua.expToLua cfg.lsp.package
           else ''{"${cfg.lsp.package}/bin/rust-analyzer"}''
         },
-            settings = {
-              ${cfg.lsp.opts}
-            }
-          },
+                    settings = {
+                      ${cfg.lsp.opts}
+                    }
+                  },
 
-          ${optionalString cfg.dap.enable ''
+                  ${optionalString cfg.dap.enable ''
           dap = {
             adapter = {
               type = "executable",
@@ -212,7 +214,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             },
           },
         ''}
-        }
+                }
       '';
     })
     (mkIf config.vim.debugger.nvim-dap.enable {

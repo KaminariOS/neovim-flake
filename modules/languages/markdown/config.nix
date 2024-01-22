@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) nvim mkIf mkMerge mkOption types;
+  inherit (lib) nvim mkIf mkMerge mkOption types mkBinding;
   inherit (builtins) attrNames;
 
   cfg = config.vim.languages.markdown;
@@ -60,13 +60,19 @@ in {
       };
 
       vim.configRC.glow = nvim.dag.entryAnywhere ''
-        autocmd FileType markdown noremap <leader>p <cmd>Glow<CR>
+        autocmd FileType markdown noremap <leader>gl <cmd>Glow<CR>
       '';
       vim.luaConfigRC.markdown = nvim.dag.entryAnywhere ''
         require('glow').setup({
           -- your override config
         })
       '';
+    })
+    (mkIf cfg.glow.enable {
+      vim.startPlugins = with pkgs.vimPlugins; [markdown-preview-nvim];
+      vim.maps.normal = mkMerge [
+        (mkBinding "<leader>p" ":MarkdownPreviewToggle<cr>" "[Markdown]Preview toggle")
+      ];
     })
   ]);
 }
