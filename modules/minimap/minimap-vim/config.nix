@@ -10,7 +10,6 @@
 in {
   config = mkIf cfg.enable {
     vim.startPlugins = [
-      pkgs.code-minimap
       "minimap-vim"
     ];
   };

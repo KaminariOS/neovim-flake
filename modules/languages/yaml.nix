@@ -16,6 +16,7 @@ with builtins; let
         lspconfig.yamlls.setup {
           capabilities = capabilities;
           on_attach = default_on_attach;
+          cmd = { "${cfg.lsp.package}/bin/yaml-language-server", "--stdio" };
         }
       '';
     };

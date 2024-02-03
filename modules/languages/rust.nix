@@ -182,14 +182,14 @@ in {
                   },
                   -- DAP configuration
                   ${optionalString cfg.dap.enable ''
-                  dap = {
-                    adapter = {
-                      type = "executable",
-                      command = "${cfg.dap.package}/bin/lldb-vscode",
-                      name = "rt_lldb",
-                    },
-                  },
-                ''}
+          dap = {
+            adapter = {
+              type = "executable",
+              command = "${cfg.dap.package}/bin/lldb-vscode",
+              name = "rt_lldb",
+            },
+          },
+        ''}
                 }
                 local rustopts = {
                   tools = {

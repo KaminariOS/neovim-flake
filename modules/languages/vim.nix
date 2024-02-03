@@ -16,6 +16,7 @@ with builtins; let
         lspconfig.vimls.setup {
           capabilities = capabilities;
           on_attach = default_on_attach;
+          cmd = { "${cfg.lsp.package}/bin/vim-language-server", "--stdio" };
         }
       '';
     };

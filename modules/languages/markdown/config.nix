@@ -16,6 +16,7 @@
         lspconfig.marksman.setup {
           capabilities = capabilities;
           on_attach = default_on_attach;
+          cmd = {"${cfg.lsp.package}/bin/marksman", "server"};
         }
       '';
     };
@@ -62,17 +63,18 @@ in {
       vim.configRC.glow = nvim.dag.entryAnywhere ''
         autocmd FileType markdown noremap <leader>gl <cmd>Glow<CR>
       '';
-      vim.luaConfigRC.markdown = nvim.dag.entryAnywhere ''
-        require('glow').setup({
-          -- your override config
-        })
-      '';
     })
     (mkIf cfg.glow.enable {
       vim.startPlugins = with pkgs.vimPlugins; [markdown-preview-nvim];
       vim.maps.normal = mkMerge [
         (mkBinding "<leader>p" ":MarkdownPreviewToggle<cr>" "[Markdown]Preview toggle")
       ];
+      vim.luaConfigRC.glow = nvim.dag.entryAnywhere ''
+        require('glow').setup({
+         glow_path = "${pkgs.glow}/bin/glow";
+          -- your override config
+        })
+      '';
     })
   ]);
 }

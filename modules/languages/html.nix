@@ -29,7 +29,7 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.enable {
-      vim.startPlugins = with pkgs; [ vscode-langservers-extracted ];
+      vim.startPlugins = with pkgs; [vscode-langservers-extracted];
       vim.luaConfigRC.html = ''
         --Enable (broadcasting) snippet capability for completion
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -51,8 +51,8 @@ in {
       vim.treesitter.enable = true;
       vim.treesitter.grammars = [cfg.treesitter.package];
 
-      vim.startPlugins = (optional cfg.treesitter.autotagHtml "nvim-ts-autotag")
-      ;
+      vim.startPlugins =
+        optional cfg.treesitter.autotagHtml "nvim-ts-autotag";
 
       vim.luaConfigRC.html-autotag = mkIf cfg.treesitter.autotagHtml (nvim.dag.entryAnywhere ''
         require('nvim-ts-autotag').setup()
