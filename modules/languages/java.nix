@@ -38,7 +38,7 @@ in {
           cmd = ${
           if isList cfg.lsp.package
           then nvim.lua.expToLua cfg.lsp.package
-          else ''{"${cfg.lsp.package}/bin/jdt-language-server", "-data", vim.fn.stdpath("cache").."/jdtls/workspace"}''
+          else ''{"${cfg.lsp.package}/bin/jdtls", "-data", vim.fn.stdpath("cache").."/jdtls/workspace"}''
         },
         }
       '';
