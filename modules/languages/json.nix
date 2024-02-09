@@ -18,6 +18,11 @@ with builtins; let
           on_attach = default_on_attach;
           cmd = {"${cfg.lsp.package}/bin/vscode-json-languageserver", "--stdio"},
         }
+
+        lspconfig.metals.setup{
+          cmd = { "${pkgs.metals}/bin/metals" }
+        }
+
       '';
     };
   };
