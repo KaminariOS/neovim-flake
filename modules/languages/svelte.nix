@@ -44,19 +44,21 @@
   };
 
   # TODO: specify packages
-  defaultDiagnostics = ["eslint_d"];
+  defaultDiagnostics = [
+  # "eslint_d"
+  ];
   diagnostics = {
-    eslint_d = {
-      package = pkgs.nodePackages.eslint_d;
-      nullConfig = pkg: ''
-        table.insert(
-          ls_sources,
-          null_ls.builtins.diagnostics.eslint_d.with({
-            command = "${lib.getExe pkg}",
-          })
-        )
-      '';
-    };
+    # eslint_d = {
+    #   package = pkgs.nodePackages.eslint_d;
+    #   nullConfig = pkg: ''
+    #     table.insert(
+    #       ls_sources,
+    #       null_ls.builtins.diagnostics.eslint_d.with({
+    #         command = "${lib.getExe pkg}",
+    #       })
+    #     )
+    #   '';
+    # };
   };
 in {
   options.vim.languages.svelte = {

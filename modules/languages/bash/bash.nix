@@ -42,19 +42,21 @@
     };
   };
 
-  defaultDiagnostics = ["shellcheck"];
+  defaultDiagnostics = [
+  # "shellcheck"
+  ];
   diagnostics = {
-    shellcheck = {
-      package = pkgs.shellcheck;
-      nullConfig = pkg: ''
-        table.insert(
-          ls_sources,
-          null_ls.builtins.diagnostics.shellcheck.with({
-            command = "${pkg}/bin/shellcheck",
-          })
-        )
-      '';
-    };
+    # shellcheck = {
+    #   package = pkgs.shellcheck;
+    #   nullConfig = pkg: ''
+    #     table.insert(
+    #       ls_sources,
+    #       null_ls.builtins.diagnostics.shellcheck.with({
+    #         command = "${pkg}/bin/shellcheck",
+    #       })
+    #     )
+    #   '';
+    # };
   };
 in {
   options.vim.languages.bash = {

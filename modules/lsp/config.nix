@@ -63,9 +63,9 @@ in {
 
           local function is_null_ls_formatting_enabled(bufnr)
               local file_type = vim.api.nvim_buf_get_option(bufnr, "filetype")
-              local generators = require("none-ls.generators").get_available(
+              local generators = require("null-ls.generators").get_available(
                   file_type,
-                  require("none-ls.methods").internal.FORMATTING
+                  require("null-ls.methods").internal.FORMATTING
               )
               return #generators > 0
           end
