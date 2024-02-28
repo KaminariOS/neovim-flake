@@ -2,7 +2,7 @@
   inherit (lib) mkEnableOption mkMappingOption;
 in {
   options.vim.lsp = {
-    enable = mkEnableOption "LSP, also enabled automatically through null-ls and lspconfig options";
+    enable = mkEnableOption "LSP, also enabled automatically through none-ls and lspconfig options";
     formatOnSave = mkEnableOption "format on save";
     mappings = {
       goToDefinition =

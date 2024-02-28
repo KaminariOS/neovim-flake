@@ -8,19 +8,19 @@
 
   cfg = config.vim.lsp;
 in {
-  config = mkIf cfg.null-ls.enable (mkMerge [
+  config = mkIf cfg.none-ls.enable (mkMerge [
     {
       vim.lsp.enable = true;
       vim.startPlugins = ["none-ls"];
 
       vim.luaConfigRC.null_ls-setup = nvim.dag.entryAnywhere ''
-        local null_ls = require("null-ls")
-        local null_helpers = require("null-ls.helpers")
-        local null_methods = require("null-ls.methods")
+        local null_ls = require("none-ls")
+        local null_helpers = require("none-ls.helpers")
+        local null_methods = require("none-ls.methods")
         local ls_sources = {}
       '';
       vim.luaConfigRC.null_ls = nvim.dag.entryAfter ["null_ls-setup" "lsp-setup"] ''
-        require('null-ls').setup({
+        require('none-ls').setup({
           debug = false,
           diagnostics_format = "[#{m}] #{s} (#{c})",
           debounce = 250,
@@ -31,7 +31,7 @@ in {
       '';
     }
     {
-      vim.luaConfigRC = mapAttrs (_: v: (nvim.dag.entryBetween ["null_ls"] ["null_ls-setup"] v)) cfg.null-ls.sources;
+      vim.luaConfigRC = mapAttrs (_: v: (nvim.dag.entryBetween ["null_ls"] ["null_ls-setup"] v)) cfg.none-ls.sources;
     }
   ]);
 }

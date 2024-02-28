@@ -1,6 +1,6 @@
 _: {
   imports = [
     ./config.nix
-    ./null-ls.nix
+    ./none-ls.nix
   ];
 }

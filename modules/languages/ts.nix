@@ -150,13 +150,13 @@ in {
     })
 
     (mkIf cfg.format.enable {
-      vim.lsp.null-ls.enable = true;
-      vim.lsp.null-ls.sources.ts-format = formats.${cfg.format.type}.nullConfig;
+      vim.lsp.none-ls.enable = true;
+      vim.lsp.none-ls.sources.ts-format = formats.${cfg.format.type}.nullConfig;
     })
 
     (mkIf cfg.extraDiagnostics.enable {
-      vim.lsp.null-ls.enable = true;
-      vim.lsp.null-ls.sources = lib.nvim.languages.diagnosticsToLua {
+      vim.lsp.none-ls.enable = true;
+      vim.lsp.none-ls.sources = lib.nvim.languages.diagnosticsToLua {
         lang = "ts";
         config = cfg.extraDiagnostics.types;
         inherit diagnostics;

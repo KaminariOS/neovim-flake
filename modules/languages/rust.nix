@@ -19,7 +19,7 @@ in {
     crates = {
       enable = mkEnableOption "crates-nvim, tools for managing dependencies";
       codeActions = mkOption {
-        description = "Enable code actions through null-ls";
+        description = "Enable code actions through none-ls";
         type = types.bool;
         default = true;
       };
@@ -58,7 +58,7 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.crates.enable {
-      vim.lsp.null-ls.enable = mkIf cfg.crates.codeActions true;
+      vim.lsp.none-ls.enable = mkIf cfg.crates.codeActions true;
 
       vim.startPlugins = ["crates-nvim"];
 

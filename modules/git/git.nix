@@ -29,7 +29,7 @@ in {
         toggleDeleted = mkMappingOption "Toggle deleted [Gitsigns]" "<leader>td";
       };
 
-      codeActions = mkEnableOption "gitsigns codeactions through null-ls";
+      codeActions = mkEnableOption "gitsigns codeactions through none-ls";
     };
   };
 }

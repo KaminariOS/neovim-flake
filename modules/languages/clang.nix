@@ -30,7 +30,7 @@
       package = pkgs.clang-tools_16;
       lspConfig = ''
         local clangd_cap = capabilities
-        -- use same offsetEncoding as null-ls
+        -- use same offsetEncoding as none-ls
         clangd_cap.offsetEncoding = {"utf-16"}
         lspconfig.clangd.setup{
           capabilities = clangd_cap;

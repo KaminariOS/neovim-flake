@@ -69,8 +69,8 @@ in {
       }
 
       (mkIf cfg.gitsigns.codeActions {
-        vim.lsp.null-ls.enable = true;
-        vim.lsp.null-ls.sources.gitsigns-ca = ''
+        vim.lsp.none-ls.enable = true;
+        vim.lsp.none-ls.sources.gitsigns-ca = ''
           table.insert(
             ls_sources,
             null_ls.gcode_actions.gitsigns

@@ -55,7 +55,7 @@ in {
             buffer = bufnr,
             callback = function()
               ${
-        if config.vim.lsp.null-ls.enable
+        if config.vim.lsp.none-ls.enable
         then ''
           if vim.b.disableFormatSave then
             return
@@ -63,9 +63,9 @@ in {
 
           local function is_null_ls_formatting_enabled(bufnr)
               local file_type = vim.api.nvim_buf_get_option(bufnr, "filetype")
-              local generators = require("null-ls.generators").get_available(
+              local generators = require("none-ls.generators").get_available(
                   file_type,
-                  require("null-ls.methods").internal.FORMATTING
+                  require("none-ls.methods").internal.FORMATTING
               )
               return #generators > 0
           end
@@ -74,7 +74,7 @@ in {
              vim.lsp.buf.format({
                 bufnr = bufnr,
                 filter = function(client)
-                  return client.name == "null-ls"
+                  return client.name == "none-ls"
                 end
               })
           else

@@ -6,7 +6,7 @@ _: {
 
     ./lspconfig
     ./lspsaga
-    ./null-ls
+    ./none-ls
 
     # lsp plugins
     ./lspsaga
