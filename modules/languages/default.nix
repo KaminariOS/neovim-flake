@@ -30,6 +30,7 @@ in {
     ./vim.nix
     ./neodev.nix
     ./lua.nix
+    ./vue.nix
   ];
 
   options.vim.languages = {
