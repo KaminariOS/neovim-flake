@@ -2683,7 +2683,7 @@ attribute set of (submodule)</p>
 <p>Plugin Package.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-null or package or one of “nvim-treesitter-context”, “gitsigns-nvim”, “plenary-nvim”, “nvim-lspconfig”, “nvim-treesitter”, “lspsaga”, “lspkind”, “nvim-lightbulb”, “lsp-signature”, “nvim-tree-lua”, “nvim-bufferline-lua”, “lualine”, “nvim-compe”, “nvim-autopairs”, “nvim-ts-autotag”, “nvim-web-devicons”, “tokyonight”, “bufdelete-nvim”, “nvim-cmp”, “cmp-nvim-lsp”, “cmp-buffer”, “cmp-vsnip”, “cmp-path”, “cmp-treesitter”, “crates-nvim”, “vim-vsnip”, “nvim-code-action-menu”, “trouble”, “none-ls”, “which-key”, “indent-blankline”, “nvim-cursorline”, “sqls-nvim”, “glow-nvim”, “telescope”, “rust-tools”, “onedark”, “catppuccin”, “dracula”, “oxocarbon”, “gruvbox”, “minimap-vim”, “dashboard-nvim”, “alpha-nvim”, “scrollbar-nvim”, “codewindow-nvim”, “nvim-notify”, “cinnamon-nvim”, “cheatsheet-nvim”, “ccc”, “cellular-automaton”, “neocord”, “icon-picker-nvim”, “dressing-nvim”, “orgmode-nvim”, “obsidian-nvim”, “vim-markdown”, “tabular”, “toggleterm-nvim”, “noice-nvim”, “nui-nvim”, “copilot-lua”, “tabnine-nvim”, “nvim-session-manager”, “gesture-nvim”, “comment-nvim”, “kommentary”, “mind-nvim”, “fidget-nvim”, “diffview-nvim”, “todo-comments”, “flutter-tools”, “flutter-tools-patched”, “hop-nvim”, “leap-nvim”, “modes-nvim”, “vim-repeat”, “smartcolumn”, “project-nvim”, “neodev-nvim”, “elixir-ls”, “elixir-tools”, “nvim-colorizer-lua”, “vim-illuminate”, “nvim-surround”, “nvim-dap”, “nvim-dap-ui”, “nvim-navic”, “nvim-navbuddy”, “copilot-cmp”, “lsp-lines”, “vim-dirtytalk”, “highlight-undo”, “nvim-docs-view”</p>
+null or package or one of “nvim-treesitter-context”, “gitsigns-nvim”, “plenary-nvim”, “nvim-lspconfig”, “nvim-treesitter”, “lspsaga”, “lspkind”, “nvim-lightbulb”, “lsp-signature”, “nvim-tree-lua”, “nvim-bufferline-lua”, “lualine”, “nvim-compe”, “nvim-autopairs”, “nvim-ts-autotag”, “nvim-web-devicons”, “tokyonight”, “bufdelete-nvim”, “nvim-cmp”, “cmp-nvim-lsp”, “cmp-buffer”, “cmp-vsnip”, “cmp-path”, “cmp-treesitter”, “crates-nvim”, “vim-vsnip”, “nvim-code-action-menu”, “trouble”, “none-ls”, “which-key”, “indent-blankline”, “nvim-cursorline”, “sqls-nvim”, “glow-nvim”, “telescope”, “rust-tools”, “onedark”, “catppuccin”, “dracula”, “oxocarbon”, “gruvbox”, “rose-pine”, “minimap-vim”, “dashboard-nvim”, “alpha-nvim”, “scrollbar-nvim”, “codewindow-nvim”, “nvim-notify”, “cinnamon-nvim”, “cheatsheet-nvim”, “ccc”, “cellular-automaton”, “neocord”, “icon-picker-nvim”, “dressing-nvim”, “orgmode-nvim”, “obsidian-nvim”, “vim-markdown”, “tabular”, “toggleterm-nvim”, “noice-nvim”, “nui-nvim”, “copilot-lua”, “tabnine-nvim”, “nvim-session-manager”, “gesture-nvim”, “comment-nvim”, “kommentary”, “mind-nvim”, “fidget-nvim”, “diffview-nvim”, “todo-comments”, “flutter-tools”, “flutter-tools-patched”, “hop-nvim”, “leap-nvim”, “modes-nvim”, “vim-repeat”, “smartcolumn”, “project-nvim”, “neodev-nvim”, “elixir-ls”, “elixir-tools”, “nvim-colorizer-lua”, “vim-illuminate”, “nvim-surround”, “nvim-dap”, “nvim-dap-ui”, “nvim-navic”, “nvim-navbuddy”, “copilot-cmp”, “lsp-lines”, “vim-dirtytalk”, “highlight-undo”, “nvim-docs-view”</p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -7574,6 +7574,81 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-vim.languages.css.format.enable"></a><a class="term" href="options.html#opt-vim.languages.css.format.enable"><code class="option">vim.languages.css.format.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable CSS formatting.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/languages/css.nix" target="_top">
+&lt;neovim-flake/modules/languages/css.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.languages.css.format.package"></a><a class="term" href="options.html#opt-vim.languages.css.format.package"><code class="option">vim.languages.css.format.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>CSS formatter package</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&lt;derivation prettier-3.1.0&gt;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/languages/css.nix" target="_top">
+&lt;neovim-flake/modules/languages/css.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.languages.css.format.type"></a><a class="term" href="options.html#opt-vim.languages.css.format.type"><code class="option">vim.languages.css.format.type</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>CSS formatter to use</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+one of “prettier”, “prettierd”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;prettier&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/languages/css.nix" target="_top">
+&lt;neovim-flake/modules/languages/css.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-vim.languages.css.lsp.enable"></a><a class="term" href="options.html#opt-vim.languages.css.lsp.enable"><code class="option">vim.languages.css.lsp.enable</code>
   </a>
  </span>
@@ -8740,54 +8815,6 @@ boolean</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/languages/markdown/markdown.nix" target="_top">
-&lt;neovim-flake/modules/languages/markdown/markdown.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-vim.languages.markdown.glow.enable"></a><a class="term" href="options.html#opt-vim.languages.markdown.glow.enable"><code class="option">vim.languages.markdown.glow.enable</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>Enable markdown preview in neovim with glow</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-boolean</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">true</code></p>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/languages/markdown/markdown.nix" target="_top">
-&lt;neovim-flake/modules/languages/markdown/markdown.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-vim.languages.markdown.glow.mappings.openPreview"></a><a class="term" href="options.html#opt-vim.languages.markdown.glow.mappings.openPreview"><code class="option">vim.languages.markdown.glow.mappings.openPreview</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>Open preview</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-null or string</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&quot;&lt;leader&gt;p&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -13095,6 +13122,30 @@ null or string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-vim.luaPackages"></a><a class="term" href="options.html#opt-vim.luaPackages"><code class="option">vim.luaPackages</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>List of lua packages to install.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/core" target="_top">
+&lt;neovim-flake/modules/core&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-vim.mapLeaderSpace"></a><a class="term" href="options.html#opt-vim.mapLeaderSpace"><code class="option">vim.mapLeaderSpace</code>
   </a>
  </span>
@@ -16550,7 +16601,7 @@ signed integer</p>
 <p>List of plugins to optionally load</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-list of (null or package or one of “nvim-treesitter-context”, “gitsigns-nvim”, “plenary-nvim”, “nvim-lspconfig”, “nvim-treesitter”, “lspsaga”, “lspkind”, “nvim-lightbulb”, “lsp-signature”, “nvim-tree-lua”, “nvim-bufferline-lua”, “lualine”, “nvim-compe”, “nvim-autopairs”, “nvim-ts-autotag”, “nvim-web-devicons”, “tokyonight”, “bufdelete-nvim”, “nvim-cmp”, “cmp-nvim-lsp”, “cmp-buffer”, “cmp-vsnip”, “cmp-path”, “cmp-treesitter”, “crates-nvim”, “vim-vsnip”, “nvim-code-action-menu”, “trouble”, “none-ls”, “which-key”, “indent-blankline”, “nvim-cursorline”, “sqls-nvim”, “glow-nvim”, “telescope”, “rust-tools”, “onedark”, “catppuccin”, “dracula”, “oxocarbon”, “gruvbox”, “minimap-vim”, “dashboard-nvim”, “alpha-nvim”, “scrollbar-nvim”, “codewindow-nvim”, “nvim-notify”, “cinnamon-nvim”, “cheatsheet-nvim”, “ccc”, “cellular-automaton”, “neocord”, “icon-picker-nvim”, “dressing-nvim”, “orgmode-nvim”, “obsidian-nvim”, “vim-markdown”, “tabular”, “toggleterm-nvim”, “noice-nvim”, “nui-nvim”, “copilot-lua”, “tabnine-nvim”, “nvim-session-manager”, “gesture-nvim”, “comment-nvim”, “kommentary”, “mind-nvim”, “fidget-nvim”, “diffview-nvim”, “todo-comments”, “flutter-tools”, “flutter-tools-patched”, “hop-nvim”, “leap-nvim”, “modes-nvim”, “vim-repeat”, “smartcolumn”, “project-nvim”, “neodev-nvim”, “elixir-ls”, “elixir-tools”, “nvim-colorizer-lua”, “vim-illuminate”, “nvim-surround”, “nvim-dap”, “nvim-dap-ui”, “nvim-navic”, “nvim-navbuddy”, “copilot-cmp”, “lsp-lines”, “vim-dirtytalk”, “highlight-undo”, “nvim-docs-view”)</p>
+list of (null or package or one of “nvim-treesitter-context”, “gitsigns-nvim”, “plenary-nvim”, “nvim-lspconfig”, “nvim-treesitter”, “lspsaga”, “lspkind”, “nvim-lightbulb”, “lsp-signature”, “nvim-tree-lua”, “nvim-bufferline-lua”, “lualine”, “nvim-compe”, “nvim-autopairs”, “nvim-ts-autotag”, “nvim-web-devicons”, “tokyonight”, “bufdelete-nvim”, “nvim-cmp”, “cmp-nvim-lsp”, “cmp-buffer”, “cmp-vsnip”, “cmp-path”, “cmp-treesitter”, “crates-nvim”, “vim-vsnip”, “nvim-code-action-menu”, “trouble”, “none-ls”, “which-key”, “indent-blankline”, “nvim-cursorline”, “sqls-nvim”, “glow-nvim”, “telescope”, “rust-tools”, “onedark”, “catppuccin”, “dracula”, “oxocarbon”, “gruvbox”, “rose-pine”, “minimap-vim”, “dashboard-nvim”, “alpha-nvim”, “scrollbar-nvim”, “codewindow-nvim”, “nvim-notify”, “cinnamon-nvim”, “cheatsheet-nvim”, “ccc”, “cellular-automaton”, “neocord”, “icon-picker-nvim”, “dressing-nvim”, “orgmode-nvim”, “obsidian-nvim”, “vim-markdown”, “tabular”, “toggleterm-nvim”, “noice-nvim”, “nui-nvim”, “copilot-lua”, “tabnine-nvim”, “nvim-session-manager”, “gesture-nvim”, “comment-nvim”, “kommentary”, “mind-nvim”, “fidget-nvim”, “diffview-nvim”, “todo-comments”, “flutter-tools”, “flutter-tools-patched”, “hop-nvim”, “leap-nvim”, “modes-nvim”, “vim-repeat”, “smartcolumn”, “project-nvim”, “neodev-nvim”, “elixir-ls”, “elixir-tools”, “nvim-colorizer-lua”, “vim-illuminate”, “nvim-surround”, “nvim-dap”, “nvim-dap-ui”, “nvim-navic”, “nvim-navbuddy”, “copilot-cmp”, “lsp-lines”, “vim-dirtytalk”, “highlight-undo”, “nvim-docs-view”)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -17914,7 +17965,7 @@ boolean</p>
 <p>List of plugins to startup.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-list of (null or package or one of “nvim-treesitter-context”, “gitsigns-nvim”, “plenary-nvim”, “nvim-lspconfig”, “nvim-treesitter”, “lspsaga”, “lspkind”, “nvim-lightbulb”, “lsp-signature”, “nvim-tree-lua”, “nvim-bufferline-lua”, “lualine”, “nvim-compe”, “nvim-autopairs”, “nvim-ts-autotag”, “nvim-web-devicons”, “tokyonight”, “bufdelete-nvim”, “nvim-cmp”, “cmp-nvim-lsp”, “cmp-buffer”, “cmp-vsnip”, “cmp-path”, “cmp-treesitter”, “crates-nvim”, “vim-vsnip”, “nvim-code-action-menu”, “trouble”, “none-ls”, “which-key”, “indent-blankline”, “nvim-cursorline”, “sqls-nvim”, “glow-nvim”, “telescope”, “rust-tools”, “onedark”, “catppuccin”, “dracula”, “oxocarbon”, “gruvbox”, “minimap-vim”, “dashboard-nvim”, “alpha-nvim”, “scrollbar-nvim”, “codewindow-nvim”, “nvim-notify”, “cinnamon-nvim”, “cheatsheet-nvim”, “ccc”, “cellular-automaton”, “neocord”, “icon-picker-nvim”, “dressing-nvim”, “orgmode-nvim”, “obsidian-nvim”, “vim-markdown”, “tabular”, “toggleterm-nvim”, “noice-nvim”, “nui-nvim”, “copilot-lua”, “tabnine-nvim”, “nvim-session-manager”, “gesture-nvim”, “comment-nvim”, “kommentary”, “mind-nvim”, “fidget-nvim”, “diffview-nvim”, “todo-comments”, “flutter-tools”, “flutter-tools-patched”, “hop-nvim”, “leap-nvim”, “modes-nvim”, “vim-repeat”, “smartcolumn”, “project-nvim”, “neodev-nvim”, “elixir-ls”, “elixir-tools”, “nvim-colorizer-lua”, “vim-illuminate”, “nvim-surround”, “nvim-dap”, “nvim-dap-ui”, “nvim-navic”, “nvim-navbuddy”, “copilot-cmp”, “lsp-lines”, “vim-dirtytalk”, “highlight-undo”, “nvim-docs-view”)</p>
+list of (null or package or one of “nvim-treesitter-context”, “gitsigns-nvim”, “plenary-nvim”, “nvim-lspconfig”, “nvim-treesitter”, “lspsaga”, “lspkind”, “nvim-lightbulb”, “lsp-signature”, “nvim-tree-lua”, “nvim-bufferline-lua”, “lualine”, “nvim-compe”, “nvim-autopairs”, “nvim-ts-autotag”, “nvim-web-devicons”, “tokyonight”, “bufdelete-nvim”, “nvim-cmp”, “cmp-nvim-lsp”, “cmp-buffer”, “cmp-vsnip”, “cmp-path”, “cmp-treesitter”, “crates-nvim”, “vim-vsnip”, “nvim-code-action-menu”, “trouble”, “none-ls”, “which-key”, “indent-blankline”, “nvim-cursorline”, “sqls-nvim”, “glow-nvim”, “telescope”, “rust-tools”, “onedark”, “catppuccin”, “dracula”, “oxocarbon”, “gruvbox”, “rose-pine”, “minimap-vim”, “dashboard-nvim”, “alpha-nvim”, “scrollbar-nvim”, “codewindow-nvim”, “nvim-notify”, “cinnamon-nvim”, “cheatsheet-nvim”, “ccc”, “cellular-automaton”, “neocord”, “icon-picker-nvim”, “dressing-nvim”, “orgmode-nvim”, “obsidian-nvim”, “vim-markdown”, “tabular”, “toggleterm-nvim”, “noice-nvim”, “nui-nvim”, “copilot-lua”, “tabnine-nvim”, “nvim-session-manager”, “gesture-nvim”, “comment-nvim”, “kommentary”, “mind-nvim”, “fidget-nvim”, “diffview-nvim”, “todo-comments”, “flutter-tools”, “flutter-tools-patched”, “hop-nvim”, “leap-nvim”, “modes-nvim”, “vim-repeat”, “smartcolumn”, “project-nvim”, “neodev-nvim”, “elixir-ls”, “elixir-tools”, “nvim-colorizer-lua”, “vim-illuminate”, “nvim-surround”, “nvim-dap”, “nvim-dap-ui”, “nvim-navic”, “nvim-navbuddy”, “copilot-cmp”, “lsp-lines”, “vim-dirtytalk”, “highlight-undo”, “nvim-docs-view”)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -19776,6 +19827,40 @@ null or string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-vim.telescope.vimgrep_arguments"></a><a class="term" href="options.html#opt-vim.telescope.vimgrep_arguments"><code class="option">vim.telescope.vimgrep_arguments</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Arguments to use for the grep command</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">[
+  &quot;\${pkgs.ripgrep}/bin/rg&quot;
+  &quot;--color=never&quot;
+  &quot;--no-heading&quot;
+  &quot;--with-filename&quot;
+  &quot;--line-number&quot;
+  &quot;--column&quot;
+  &quot;--smart-case&quot;
+  &quot;--hidden&quot;
+  &quot;--no-ignore&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/telescope/telescope.nix" target="_top">
+&lt;neovim-flake/modules/utility/telescope/telescope.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-vim.terminal.toggleterm.enable"></a><a class="term" href="options.html#opt-vim.terminal.toggleterm.enable"><code class="option">vim.terminal.toggleterm.enable</code>
   </a>
  </span>
@@ -20024,7 +20109,7 @@ strings concatenated with “\n”</p>
 <p>Supported themes can be found in <code class="literal">supported_themes.nix</code></p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-one of “catppuccin”, “dracula”, “gruvbox”, “onedark”, “oxocarbon”, “tokyonight”</p>
+one of “catppuccin”, “dracula”, “gruvbox”, “onedark”, “oxocarbon”, “rose-pine”, “tokyonight”</p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -23584,6 +23669,278 @@ null or string</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/motion/leap/leap.nix" target="_top">
 &lt;neovim-flake/modules/utility/motion/leap/leap.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.glow.enable"></a><a class="term" href="options.html#opt-vim.utility.preview.glow.enable"><code class="option">vim.utility.preview.glow.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable markdown preview in neovim with glow.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/glow/glow.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/glow/glow.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.glow.mappings.openPreview"></a><a class="term" href="options.html#opt-vim.utility.preview.glow.mappings.openPreview"><code class="option">vim.utility.preview.glow.mappings.openPreview</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Open preview</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&lt;leader&gt;p&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/glow/glow.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/glow/glow.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.enable"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.enable"><code class="option">vim.utility.preview.markdownPreview.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Markdown preview in neovim with markdown-preview.nvim.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.alwaysAllowPreview"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.alwaysAllowPreview"><code class="option">vim.utility.preview.markdownPreview.alwaysAllowPreview</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Allow preview on all filetypes</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.autoClose"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.autoClose"><code class="option">vim.utility.preview.markdownPreview.autoClose</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Automatically close the preview window after leaving a Markdown buffer</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.autoStart"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.autoStart"><code class="option">vim.utility.preview.markdownPreview.autoStart</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Automatically open the preview window after entering a Markdown buffer</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.broadcastServer"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.broadcastServer"><code class="option">vim.utility.preview.markdownPreview.broadcastServer</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Allow for outside and network wide connections</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.customIP"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.customIP"><code class="option">vim.utility.preview.markdownPreview.customIP</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>IP-address to use</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.customPort"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.customPort"><code class="option">vim.utility.preview.markdownPreview.customPort</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Port to use</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.filetypes"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.filetypes"><code class="option">vim.utility.preview.markdownPreview.filetypes</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Allowed filetypes</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">[
+  &quot;markdown&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-vim.utility.preview.markdownPreview.lazyRefresh"></a><a class="term" href="options.html#opt-vim.utility.preview.markdownPreview.lazyRefresh"><code class="option">vim.utility.preview.markdownPreview.lazyRefresh</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Only update preview when saving or leaving insert mode</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/notashelf/neovim-flake/blob/main/modules/utility/preview/markdown-preview/markdown-preview.nix" target="_top">
+&lt;neovim-flake/modules/utility/preview/markdown-preview/markdown-preview.nix&gt;
 </a></code>
 </td></tr>
 </table>
