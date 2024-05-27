@@ -20,7 +20,7 @@
       lspConfig = ''
         lspconfig.ccls.setup{
           capabilities = capabilities;
-          on_attach=default_on_attach;
+          on_attach= default_on_attach;
           cmd = ${packageToCmd cfg.lsp.package "ccls"};
           ${optionalString (cfg.lsp.opts != null) "init_options = ${cfg.lsp.opts}"}
         }
@@ -34,7 +34,7 @@
         clangd_cap.offsetEncoding = {"utf-16"}
         lspconfig.clangd.setup{
           capabilities = clangd_cap;
-          on_attach=default_on_attach;
+          on_attach = default_on_attach;
           cmd = ${packageToCmd cfg.lsp.package "clangd"};
           ${optionalString (cfg.lsp.opts != null) "init_options = ${cfg.lsp.opts}"}
         }

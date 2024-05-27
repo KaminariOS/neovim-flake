@@ -103,7 +103,6 @@ in {
         (
           # with pkgs.vimPlugins;
           [
-            pkgs.vimPlugins.lsp-inlayhints-nvim
             "rustaceanvim"
           ]
         )
@@ -128,24 +127,9 @@ in {
       vim.lsp.lspconfig.sources.rust-lsp = ''
                 vim.g.cargo_shell_command_runner = '!'
 
-                require("lsp-inlayhints").setup()
-                vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-        vim.api.nvim_create_autocmd("LspAttach", {
-          group = "LspAttach_inlayhints",
-          callback = function(args)
-            if not (args.data and args.data.client_id) then
-              return
-            end
-
-            local bufnr = args.buf
-            local client = vim.lsp.get_client_by_id(args.data.client_id)
-            require("lsp-inlayhints").on_attach(client, bufnr)
-          end,
-        })
-
                 rust_on_attach = function(client, bufnr)
                   default_on_attach(client, bufnr)
-                  vim.lsp.inlay_hint(bufnr, true)
+                  vim.lsp.inlay_hint.enable(true, {bufnr})
                   local opts = { noremap=true, silent=true, buffer = bufnr }
                   ${optionalString cfg.dap.enable ''
           vim.keymap.set(
@@ -193,11 +177,7 @@ in {
                 }
                 local rustopts = {
                   tools = {
-                    autoSetHints = true,
                     hover_with_actions = false,
-                    inlay_hints = {
-                      only_current_line = false,
-                    }
                   },
                   server = {
                     capabilities = capabilities,

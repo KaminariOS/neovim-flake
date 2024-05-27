@@ -94,11 +94,14 @@ in {
         end
       end
 
-      ${optionalString (config.vim.ui.breadcrumbs.enable) ''local navic = require("nvim-navic")''}
+      ${optionalString config.vim.ui.breadcrumbs.enable ''local navic = require("nvim-navic")''}
       default_on_attach = function(client, bufnr)
         attach_keymaps(client, bufnr)
         format_callback(client, bufnr)
-        ${optionalString (config.vim.ui.breadcrumbs.enable) ''
+        if client.server_capabilities.inlayHintProvider then
+          vim.lsp.inlay_hint.enable(true, {bufnr})
+        end
+        ${optionalString config.vim.ui.breadcrumbs.enable ''
         -- let navic attach to buffers
         if client.server_capabilities.documentSymbolProvider then
           navic.attach(client, bufnr)
