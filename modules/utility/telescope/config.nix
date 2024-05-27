@@ -89,6 +89,7 @@ in {
               "${pkgs.fd}/bin/fd",
             },
           },
+          file_ignore_patterns = { "node_modules", ".git/", "dist", "build", "target", "result" }, -- TODO: make this configurable
         },
         prompt_prefix = "     ",
         selection_caret = "  ",
@@ -110,7 +111,6 @@ in {
           height = 0.8,
           preview_cutoff = 120,
         },
-        file_ignore_patterns = { "node_modules", ".git/", "dist/", "build/", "target/", "result/" }, -- TODO: make this configurable
         color_devicons = true,
         path_display = { "absolute" },
         set_env = { ["COLORTERM"] = "truecolor" },
