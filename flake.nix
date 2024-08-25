@@ -45,7 +45,7 @@
       }: {
         formatter = pkgs.alejandra;
         devShells = {
-          default = self'.devShells.lsp;
+          default = self'.devShells.nvim-nix;
           nvim-nix = pkgs.mkShell {nativeBuildInputs = [config.packages.nix];};
           lsp = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [nil statix deadnix];
@@ -337,7 +337,7 @@
     };
 
     oxocarbon = {
-      url = "github:glyh/oxocarbon.nvim/lualine-support";
+      url = "github:nyoom-engineering/oxocarbon.nvim";
       flake = false;
     };
 
