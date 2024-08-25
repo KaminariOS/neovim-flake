@@ -13,21 +13,23 @@ in {
     vim.luaConfigRC.whichkey = nvim.dag.entryAnywhere ''
       local wk = require("which-key")
       wk.setup ({
-        key_labels = {
-          ["<space>"] = "SPACE",
-          ["<leader>"] = "SPACE",
-          ["<cr>"] = "RETURN",
-          ["<tab>"] = "TAB",
+        replace = {
+          key = {
+            {"<space>", "SPACE"},
+            {"<leader>", "SPACE"},
+            {"<cr>", "RETURN"},
+            {"<tab>", "TAB"},
+          }
         },
 
-        ${lib.optionalString (config.vim.ui.borders.plugins.which-key.enable) ''
+        ${lib.optionalString config.vim.ui.borders.plugins.which-key.enable ''
         window = {
           border = "${config.vim.ui.borders.plugins.which-key.style}",
         },
       ''}
       })
 
-      wk.register({
+      wk.add({
         ${
         if config.vim.tabline.nvimBufferline.enable
         then ''
