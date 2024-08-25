@@ -43,7 +43,7 @@
   };
 
   defaultDiagnostics = [
-  # "shellcheck"
+    # "shellcheck"
   ];
   diagnostics = {
     # shellcheck = {

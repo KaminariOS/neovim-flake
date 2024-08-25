@@ -4,7 +4,7 @@
   ...
 }: let
   inherit (builtins) attrValues attrNames map mapAttrs toJSON isString concatStringsSep filter;
-  inherit (lib) mkOption types mapAttrsFlatten filterAttrs optionalString getAttrs literalExpression;
+  inherit (lib) mkOption types mapAttrsToList filterAttrs optionalString getAttrs literalExpression;
   inherit (lib) nvim;
   inherit (nvim.lua) toLuaObject;
   inherit (nvim.vim) valToVim;
@@ -254,7 +254,7 @@ in {
   config = let
     filterNonNull = mappings: filterAttrs (_name: value: value != null) mappings;
     globalsScript =
-      mapAttrsFlatten (name: value: "let g:${name}=${valToVim value}")
+      mapAttrsToList (name: value: "let g:${name}=${valToVim value}")
       (filterNonNull cfg.globals);
 
     toLuaBindings = mode: maps:

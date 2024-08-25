@@ -73,7 +73,7 @@ in {
               },
               sort_by = 'extension',
               diagnostics = "nvim_lsp", -- TODO: use coc if it's enabled
-              diagnostics_update_in_insert = true,
+              update_in_insert = true,
               diagnostics_indicator = function(count, level, diagnostics_dict, context)
                  local s = ""
                  for e, n in pairs(diagnostics_dict) do

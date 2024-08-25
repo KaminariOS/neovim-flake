@@ -32,10 +32,10 @@ in {
         if config.vim.tabline.nvimBufferline.enable
         then ''
           -- Buffer
-          ["<leader>b"] = { name = "+Buffer" },
-          ["<leader>bm"] = { name = "BufferLineMove" },
-          ["<leader>bs"] = { name = "BufferLineSort" },
-          ["<leader>bsi"] = { name = "BufferLineSortById" },
+          { "<leader>b", group = "Buffer" },
+          { "<leader>bm", group = "BufferLineMove" },
+          { "<leader>bs", group = "BufferLineSort" },
+          { "<leader>bsi", group = "BufferLineSortById" },
         ''
         else ""
       }
@@ -43,12 +43,11 @@ in {
         ${
         if config.vim.telescope.enable
         then ''
-          ["<leader>f"] = { name = "+Telescope" },
-           -- Telescope
-          ["<leader>fl"] = { name = "Telescope LSP" },
-          ["<leader>fm"] = { name = "Cellular Automaton" }, -- TODO: mvoe this to its own parent group
-          ["<leader>fv"] = { name = "Telescope Git" },
-          ["<leader>fvc"] = { name = "Commits" },
+          { "<leader>f", group = "Telescope" },
+          { "<leader>fl", group = "Telescope LSP" },
+          { "<leader>fm", group = "Cellular Automaton" },
+          { "<leader>fv", group = "Telescope Git" },
+          { "<leader>fvc", group = "Commits" },
         ''
         else ""
       }
@@ -57,9 +56,9 @@ in {
         if config.vim.lsp.trouble.enable
         then ''
           -- Trouble
-          ["<leader>lw"] = { name = "Workspace" },
-          ["<leader>x"] = { name = "+Trouble" }, -- TODO: move all trouble binds to the same parent group
-          ["<leader>l"] = { name = "+Trouble" },
+          { "<leader>lw", group = "Workspace" },
+          { "<leader>x", group = "Trouble" },
+          { "<leader>l", group = "Trouble" },
         ''
         else ""
       }
@@ -68,7 +67,7 @@ in {
         if config.vim.lsp.nvimCodeActionMenu.enable
         then ''
           -- Parent Groups
-          ["<leader>c"] = { name = "+CodeAction" },
+          { "<leader>c", group = "CodeAction" },
         ''
         else ""
       }
@@ -77,7 +76,7 @@ in {
         if config.vim.minimap.codewindow.enable || config.vim.minimap.minimap-vim.enable
         then ''
           -- Minimap
-          ["<leader>m"] = { name = "+Minimap" }, -- TODO: remap both minimap plugins' keys to be the same
+          { "<leader>m", group = "Minimap" },
         ''
         else ""
       }
@@ -86,7 +85,7 @@ in {
         if config.vim.notes.mind-nvim.enable || config.vim.notes.obsidian.enable || config.vim.notes.orgmode.enable
         then ''
           -- Notes
-          ["<leader>o"] = { name = "+Notes" },
+          { "<leader>o", group = "Notes" },
           -- TODO: options for other note taking plugins and their individual binds
           -- TODO: move all note-taker binds under leader + o
         ''
@@ -98,7 +97,7 @@ in {
         if config.vim.filetree.nvimTree.enable
         then ''
           -- NvimTree
-          ["<leader>t"] = { name = "+NvimTree" },
+          { "<leader>t", group = "NvimTree" },
         ''
         else ""
       }
@@ -107,7 +106,7 @@ in {
         if config.vim.git.gitsigns.enable
         then ''
           -- Git
-          ["<leader>g"] = { name = "+Gitsigns" },
+          { "<leader>g", group = "Gitsigns" },
         ''
         else ""
       }
@@ -116,7 +115,7 @@ in {
         if config.vim.languages.markdown.glow.enable
         then ''
           -- Markdown
-          ["<leader>pm"] = { name = "+Preview Markdown" },
+          { "<leader>pm", group = "Preview Markdown" },
         ''
         else ""
       }

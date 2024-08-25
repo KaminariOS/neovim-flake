@@ -45,7 +45,7 @@
 
   # TODO: specify packages
   defaultDiagnostics = [
-  # "eslint_d"
+    # "eslint_d"
   ];
   diagnostics = {
     # eslint_d = {

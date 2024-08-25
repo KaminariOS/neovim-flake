@@ -125,13 +125,13 @@ in {
 
       vim.lsp.lspconfig.enable = true;
       vim.lsp.lspconfig.sources.rust-lsp = ''
-                vim.g.cargo_shell_command_runner = '!'
+        vim.g.cargo_shell_command_runner = '!'
 
-                rust_on_attach = function(client, bufnr)
-                  default_on_attach(client, bufnr)
-                  vim.lsp.inlay_hint.enable(true, {bufnr})
-                  local opts = { noremap=true, silent=true, buffer = bufnr }
-                  ${optionalString cfg.dap.enable ''
+        rust_on_attach = function(client, bufnr)
+          default_on_attach(client, bufnr)
+          vim.lsp.inlay_hint.enable(true, {bufnr})
+          local opts = { noremap=true, silent=true, buffer = bufnr }
+          ${optionalString cfg.dap.enable ''
           vim.keymap.set(
             "n", "${config.vim.debugger.nvim-dap.mappings.continue}",
             function()
@@ -145,27 +145,27 @@ in {
             opts
           )
         ''}
-                end
+        end
 
-                vim.g.rustaceanvim = {
-                  -- Plugin configuration
-                  tools = {
-                  },
-                  -- LSP configuration
-                  server = {
-                    on_attach = rust_on_attach,
-                    cmd = function()
-                      return {"${cfg.lsp.package}/bin/rust-analyzer"}
-                    end,
-                    settings = {
-                      -- rust-analyzer language server configuration
-                      ['rust-analyzer'] = {
+        vim.g.rustaceanvim = {
+          -- Plugin configuration
+          tools = {
+          },
+          -- LSP configuration
+          server = {
+            on_attach = rust_on_attach,
+            cmd = function()
+              return {"${cfg.lsp.package}/bin/rust-analyzer"}
+            end,
+            settings = {
+              -- rust-analyzer language server configuration
+              ['rust-analyzer'] = {
 
-                      },
-                    },
-                  },
-                  -- DAP configuration
-                  ${optionalString cfg.dap.enable ''
+              },
+            },
+          },
+          -- DAP configuration
+          ${optionalString cfg.dap.enable ''
           dap = {
             adapter = {
               type = "executable",
@@ -174,24 +174,24 @@ in {
             },
           },
         ''}
-                }
-                local rustopts = {
-                  tools = {
-                    hover_with_actions = false,
-                  },
-                  server = {
-                    capabilities = capabilities,
-                    on_attach = rust_on_attach,
-                    cmd = ${
+        }
+        local rustopts = {
+          tools = {
+            hover_with_actions = false,
+          },
+          server = {
+            capabilities = capabilities,
+            on_attach = rust_on_attach,
+            cmd = ${
           if isList cfg.lsp.package
           then nvim.lua.expToLua cfg.lsp.package
           else ''{"${cfg.lsp.package}/bin/rust-analyzer"}''
         },
-                    settings = {
-                      ${cfg.lsp.opts}
-                    }
-                  },
-                }
+            settings = {
+              ${cfg.lsp.opts}
+            }
+          },
+        }
       '';
     })
     (mkIf config.vim.debugger.nvim-dap.enable {
