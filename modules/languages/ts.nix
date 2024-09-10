@@ -9,12 +9,12 @@
 
   cfg = config.vim.languages.ts;
 
-  defaultServer = "tsserver";
+  defaultServer = "ts_ls";
   servers = {
-    tsserver = {
+    ts_ls = {
       package = pkgs.nodePackages.typescript-language-server;
       lspConfig = ''
-        lspconfig.tsserver.setup {
+        lspconfig.ts_ls.setup {
           capabilities = capabilities;
           on_attach = attach_keymaps,
           cmd = ${
