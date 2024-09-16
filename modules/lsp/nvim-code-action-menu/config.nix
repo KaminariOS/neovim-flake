@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   inherit (lib) addDescriptionsToMappings mkIf mkSetBinding nvim;
@@ -13,9 +14,9 @@
   mappings = addDescriptionsToMappings cfg.nvimCodeActionMenu.mappings mappingDefinitions;
 in {
   config = mkIf (cfg.enable && cfg.nvimCodeActionMenu.enable) {
-    vim.startPlugins = ["nvim-code-action-menu"];
+    vim.startPlugins = ["nvim-code-action-menu" pkgs.vimPlugins.fzf-lua];
 
-    vim.maps.normal = mkSetBinding mappings.open ":CodeActionMenu<CR>";
+    vim.maps.normal = mkSetBinding mappings.open ":lua require('fzf-lua').lsp_code_actions()";
 
     vim.luaConfigRC.code-action-menu = nvim.dag.entryAnywhere ''
       -- border configuration
