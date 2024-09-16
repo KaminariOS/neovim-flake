@@ -15,7 +15,7 @@
 in {
   config = mkIf (cfg.enable && cfg.nvimCodeActionMenu.enable) {
     vim = {
-      startPlugins = ["nvim-code-action-menu" pkgs.vimPlugins.fzf-lua];
+      startPlugins = [pkgs.vimPlugins.fzf-lua];
 
       maps.normal = mkSetBinding mappings.open ":lua require('fzf-lua').lsp_code_actions()<CR>";
 

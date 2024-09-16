@@ -55,7 +55,10 @@ inputs: let
         enableExtraDiagnostics = true;
 
         nix.enable = true;
-        html.enable = isMaximal;
+        html = {
+          enable = true;
+          treesitter.autotagHtml = true;
+        };
         clang = {
           enable = true;
           lsp.server = "clangd";
@@ -75,13 +78,14 @@ inputs: let
         java.enable = isMaximal;
         ts.enable = isMaximal;
         svelte.enable = isMaximal;
+        vue.enable = true;
         go.enable = isMaximal;
         zig.enable = isMaximal;
         python.enable = true;
         dart.enable = isMaximal;
         elixir.enable = false;
         terraform.enable = isMaximal;
-        markdown.enable = isMaximal;
+        markdown.enable = true;
       };
 
       vim.visuals = {
@@ -134,6 +138,42 @@ inputs: let
       vim.filetree = {
         nvimTree = {
           enable = true;
+          renderer = {
+            rootFolderLabel = true;
+          };
+          view = {
+            width = 25;
+          };
+          actions = {
+            openFile = {
+              quitOnOpen = true;
+            };
+          };
+          # openTreeOnNewTab = false;
+          openOnSetup = false;
+          diagnostics = {
+            enable = true;
+            showOnDirs = true;
+          };
+          git = {
+            enable = true;
+          };
+          modified = {
+            enable = true;
+          };
+          renderer = {
+            highlightGit = true;
+            highlightModified = "all";
+            highlightOpenedFiles = "all";
+            icons = {
+              gitPlacement = "after";
+              modifiedPlacement = "before";
+              show = {
+                git = true;
+                modified = true;
+              };
+            };
+          };
         };
       };
 
@@ -176,7 +216,7 @@ inputs: let
 
       vim.utility = {
         ccc.enable = isMaximal;
-        vim-wakatime.enable = isMaximal;
+        vim-wakatime.enable = false;
         icon-picker.enable = isMaximal;
         surround.enable = isMaximal;
         diffview-nvim.enable = true;
@@ -231,6 +271,7 @@ inputs: let
 
       vim.session = {
         nvim-session-manager.enable = true;
+        neoconf.enable = true;
       };
 
       vim.gestures = {

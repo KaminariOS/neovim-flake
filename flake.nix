@@ -103,11 +103,6 @@
       flake = false;
     };
 
-    nvim-code-action-menu = {
-      url = "github:weilbith/nvim-code-action-menu";
-      flake = false;
-    };
-
     lsp-signature = {
       url = "github:ray-x/lsp_signature.nvim";
       flake = false;

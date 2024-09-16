@@ -30,7 +30,6 @@ with lib; let
     "cmp-treesitter"
     "crates-nvim"
     "vim-vsnip"
-    "nvim-code-action-menu"
     "trouble"
     "none-ls"
     "which-key"

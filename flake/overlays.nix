@@ -7,7 +7,7 @@
 
   buildPkg = pkgs: modules: (neovimConfiguration {inherit pkgs modules;}).neovim;
 
-  nixConfig = mainConfig false;
+  nixConfig = mainConfig true;
   maximalConfig = mainConfig true;
   tidalConfig = {config.vim.tidal.enable = !true;};
 in {

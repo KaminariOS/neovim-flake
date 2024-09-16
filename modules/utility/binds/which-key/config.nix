@@ -23,7 +23,7 @@ in {
         },
 
         ${lib.optionalString config.vim.ui.borders.plugins.which-key.enable ''
-        window = {
+        win = {
           border = "${config.vim.ui.borders.plugins.which-key.style}",
         },
       ''}
