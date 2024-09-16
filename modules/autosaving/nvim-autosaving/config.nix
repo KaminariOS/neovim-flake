@@ -11,6 +11,6 @@ in {
   config =
     mkIf cfg.enable
     {
-      vim.startPlugins = [ "auto-save-nvim" ];
+      vim.startPlugins = ["auto-save-nvim"];
     };
 }
