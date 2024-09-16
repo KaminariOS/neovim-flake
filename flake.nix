@@ -576,5 +576,9 @@
       url = "github:tpope/vim-repeat";
       flake = false;
     };
+    auto-save-nvim = {
+      url = "github:Little-Captain/auto-save.nvim";
+      flake = false;
+    };
   };
 }

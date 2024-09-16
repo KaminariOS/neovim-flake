@@ -97,6 +97,7 @@ with lib; let
     "vim-dirtytalk"
     "highlight-undo"
     "nvim-docs-view"
+    "auto-save-nvim"
   ];
   # You can either use the name of the plugin or a package.
   pluginType = with types;
