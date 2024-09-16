@@ -12,7 +12,7 @@
   defaultServer = "vue";
   servers = {
     vue = {
-      package = pkgs.nodePackages.vls;
+      package = pkgs.vue-language-server;
       lspConfig = ''
         lspconfig.vuels.setup {
           capabilities = capabilities;
@@ -20,7 +20,7 @@
           cmd = ${
           if isList cfg.lsp.package
           then nvim.lua.expToLua cfg.lsp.package
-          else ''{"${cfg.lsp.package}/bin/vls", "--stdio"}''
+          else ''{"${cfg.lsp.package}/bin/vue-language-server", "--stdio"}''
         }
         }
       '';
