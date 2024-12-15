@@ -12,7 +12,7 @@
   defaultServer = "vue";
   servers = {
     vue = {
-      package = pkgs.nodePackages.vls;
+      package = pkgs.vue-language-server;
       lspConfig = ''
         lspconfig.vuels.setup {
           capabilities = capabilities;
