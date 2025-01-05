@@ -1,75 +1,50 @@
-inputs: {
-  configuration,
+{
+  inputs,
+  lib,
+}: {
   pkgs,
-  lib ? pkgs.lib,
-  check ? true,
   extraSpecialArgs ? {},
+  modules ? [],
+  # deprecated
+  extraModules ? [],
+  configuration ? {},
 }: let
-  inherit (builtins) map filter isString toString getAttr;
-  inherit (pkgs) wrapNeovim vimPlugins;
-  inherit (pkgs.vimUtils) buildVimPlugin;
+  inherit (lib.strings) toString;
+  inherit (lib.lists) concatLists;
 
-  extendedLib = import ../lib/stdlib-extended.nix lib;
+  # import modules.nix with `check`, `pkgs` and `lib` as arguments
+  # check can be disabled while calling this file is called
+  # to avoid checking in all modules
+  nvimModules = import ./modules.nix {inherit pkgs lib;};
 
-  nvimModules = import ./modules.nix {
-    inherit check pkgs;
-    lib = extendedLib;
-  };
-
-  module = extendedLib.evalModules {
-    modules = [configuration] ++ nvimModules;
-    specialArgs = {modulesPath = toString ./.;} // extraSpecialArgs;
-  };
-
-  vimOptions = module.config.vim;
-
-  buildPlug = {pname, ...} @ args:
-    assert lib.asserts.assertMsg (pname != "nvim-treesitter") "Use buildTreesitterPlug for building nvim-treesitter.";
-      buildVimPlugin (args
-        // {
-          version = "master";
-          src = getAttr pname inputs;
-        });
-
-  buildTreesitterPlug = grammars: vimPlugins.nvim-treesitter.withPlugins (_: grammars);
-
-  buildConfigPlugins = plugins:
-    map
-    (plug: (
-      if (isString plug)
-      then
-        (
-          if (plug == "nvim-treesitter")
-          then (buildTreesitterPlug vimOptions.treesitter.grammars)
-          else if (plug == "flutter-tools-patched")
-          then
-            (buildPlug {
-              pname = "flutter-tools";
-              patches = [../patches/flutter-tools.patch];
-            })
-          else (buildPlug {pname = plug;})
-        )
-      else plug
-    ))
-    (filter
-      (f: f != null)
-      plugins);
-
-  neovim = wrapNeovim vimOptions.package {
-    inherit (vimOptions) viAlias;
-    inherit (vimOptions) vimAlias;
-
-    configure = {
-      customRC = vimOptions.builtConfigRC;
-
-      packages.myVimPackage = {
-        start = buildConfigPlugins vimOptions.startPlugins;
-        opt = buildConfigPlugins vimOptions.optPlugins;
+  # evaluate the extended library with the modules
+  # optionally with any additional modules passed by the user
+  module = lib.evalModules {
+    specialArgs =
+      extraSpecialArgs
+      // {
+        inherit inputs;
+        modulesPath = toString ./.;
       };
-    };
+    modules = concatLists [
+      nvimModules
+      modules
+      (lib.optional (configuration != {}) (lib.warn ''
+          nvf: passing 'configuration' to lib.neovimConfiguration is deprecated.
+        ''
+        configuration))
+
+      (lib.optionals (extraModules != []) (lib.warn ''
+          nvf: passing 'extraModules' to lib.neovimConfiguration is deprecated, use 'modules' instead.
+        ''
+        extraModules))
+    ];
   };
 in {
   inherit (module) options config;
   inherit (module._module.args) pkgs;
-  inherit neovim;
+
+  # Expose wrapped neovim-package for userspace
+  # or module consumption.
+  neovim = module.config.vim.build.finalPackage;
 }

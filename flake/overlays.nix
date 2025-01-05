@@ -1,21 +1,19 @@
 {
-  inputs,
   pkgs,
+  lib,
   ...
 }: let
-  inherit (import ../configuration.nix inputs) neovimConfiguration mainConfig;
+  inherit (lib.nvim) neovimConfiguration;
 
   buildPkg = pkgs: modules: (neovimConfiguration {inherit pkgs modules;}).neovim;
 
-  nixConfig = mainConfig true;
-  maximalConfig = mainConfig true;
-  tidalConfig = {config.vim.tidal.enable = !true;};
+  nixConfig = import ../configuration.nix false;
+  maximalConfig = import ../configuration.nix true;
 in {
   flake.overlays.default = _final: prev: {
     inherit neovimConfiguration;
     neovim-nix = buildPkg prev [nixConfig];
     neovim-maximal = buildPkg prev [maximalConfig];
-    neovim-tidal = buildPkg prev [tidalConfig];
     devPkg = buildPkg pkgs [nixConfig {config.vim.languages.html.enable = pkgs.lib.mkForce true;}];
   };
 }

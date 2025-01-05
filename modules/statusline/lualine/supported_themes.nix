@@ -1,6 +1,0 @@
-[
-  "tokyonight"
-  "onedark"
-  "catppuccin"
-  "oxocarbon"
-]

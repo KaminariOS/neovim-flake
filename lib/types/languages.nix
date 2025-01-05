@@ -1,31 +1,37 @@
-{lib}:
-with lib; let
+{lib}: let
+  inherit (lib.options) mkOption mkPackageOption;
+  inherit (lib.attrsets) attrNames;
+  inherit (lib.types) listOf either enum submodule package;
+
   diagnosticSubmodule = _: {
     options = {
       type = mkOption {
         description = "Type of diagnostic to enable";
         type = attrNames diagnostics;
       };
+
       package = mkOption {
+        type = package;
         description = "Diagnostics package";
-        type = types.package;
       };
     };
   };
-in {
+
   diagnostics = {
     langDesc,
-    diagnostics,
-    defaultDiagnostics,
+    diagnosticsProviders,
+    defaultDiagnosticsProvider,
   }:
     mkOption {
+      type = listOf (either (enum (attrNames diagnosticsProviders)) (submodule diagnosticSubmodule));
+      default = defaultDiagnosticsProvider;
       description = "List of ${langDesc} diagnostics to enable";
-      type = with types; listOf (either (enum (attrNames diagnostics)) (submodule diagnosticSubmodule));
-      default = defaultDiagnostics;
     };
 
   mkGrammarOption = pkgs: grammar:
     mkPackageOption pkgs ["${grammar} treesitter"] {
       default = ["vimPlugins" "nvim-treesitter" "builtGrammars" grammar];
     };
+in {
+  inherit diagnostics diagnosticSubmodule mkGrammarOption;
 }

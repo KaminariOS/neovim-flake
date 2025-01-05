@@ -19,7 +19,6 @@ jobs:
         package:
           - default
           - nix
-          - tidal
           - maximal
     steps:
       - uses: easimon/maximize-build-space@v10
@@ -38,7 +37,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
-      - uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@v15
         with:
           authToken: ${{ secrets.CACHIX_TOKEN }}
           extraPullNames: nix-community

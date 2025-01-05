@@ -55,7 +55,7 @@ in {
             buffer = bufnr,
             callback = function()
               ${
-        if config.vim.lsp.none-ls.enable
+        if config.vim.lsp.null-ls.enable
         then ''
           if vim.b.disableFormatSave then
             return
@@ -74,7 +74,7 @@ in {
              vim.lsp.buf.format({
                 bufnr = bufnr,
                 filter = function(client)
-                  return client.name == "none-ls"
+                  return client.name == "null-ls"
                 end
               })
           else

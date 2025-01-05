@@ -1,6 +1,6 @@
-# neovim-flake-manual {#neovim-flake-manual}
+# nvf manual {#nvf-manual}
 
-## Version @VERSION@
+## Version @NVF_VERSION@
 
 ```{=include=} preface
 preface.md
@@ -8,13 +8,17 @@ try-it-out.md
 ```
 
 ```{=include=} parts
-custom-configs.md
-custom-package.md
-custom-plugins.md
 default-configs.md
-home-manager.md
-languages.md
+installation.md
+configuring.md
+```
+
+```{=include=} chapters
 hacking.md
+```
+
+```{=include=} appendix html:into-file=//quirks.html
+quirks.md
 ```
 
 ```{=include=} appendix html:into-file=//options.html

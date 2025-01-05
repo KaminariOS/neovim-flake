@@ -1,7 +1,9 @@
 # Helpers for converting values to lua
 {lib}: let
-  inherit (lib) mapAttrsToList filterAttrs concatStringsSep concatMapStringsSep stringToCharacters boolToString;
-  inherit (builtins) hasAttr head;
+  inherit (builtins) hasAttr head throw typeOf isList isAttrs isBool isInt isString isPath isFloat toJSON;
+  inherit (lib.attrsets) mapAttrsToList filterAttrs;
+  inherit (lib.strings) concatStringsSep concatMapStringsSep stringToCharacters concatLines;
+  inherit (lib.trivial) boolToString warn;
 in rec {
   # Convert a null value to lua's nil
   nullString = value:
@@ -11,27 +13,29 @@ in rec {
 
   # convert an expression to lua
   expToLua = exp:
-    if builtins.isList exp
+    if isList exp
     then listToLuaTable exp # if list, convert to lua table
-    else if builtins.isAttrs exp
+    else if isAttrs exp
     then attrsetToLuaTable exp # if attrs, convert to table
-    else if builtins.isBool exp
-    then lib.boolToString exp # if bool, convert to string
-    else if builtins.isInt exp
-    then builtins.toString exp # if int, convert to string
-    else (builtins.toJSON exp); # otherwise jsonify the value and print as is
+    else if isBool exp
+    then boolToString exp # if bool, convert to string
+    else if isInt exp
+    then toString exp # if int, convert to string
+    else if exp == null
+    then "nil"
+    else (toJSON exp); # otherwise jsonify the value and print as is
 
   # convert list to a lua table
   listToLuaTable = list:
-    "{ " + (builtins.concatStringsSep ", " (map expToLua list)) + " }";
+    "{ " + (concatStringsSep ", " (map expToLua list)) + " }";
 
   # convert attrset to a lua table
   attrsetToLuaTable = attrset:
     "{ "
     + (
-      builtins.concatStringsSep ", "
+      concatStringsSep ", "
       (
-        lib.mapAttrsToList (
+        mapAttrsToList (
           name: value:
             name
             + " = "
@@ -42,15 +46,20 @@ in rec {
     )
     + " }";
   # Convert a list of lua expressions to a lua table. The difference to listToLuaTable is that the elements here are expected to be lua expressions already, whereas listToLuaTable converts from nix types to lua first
-  luaTable = items: ''{${builtins.concatStringsSep "," items}}'';
+  luaTable = items: ''{${concatStringsSep "," items}}'';
+
+  isLuaInline = object: (object._type or null) == "lua-inline";
 
   toLuaObject = args:
-    if builtins.isAttrs args
+    if isAttrs args
     then
-      if hasAttr "__raw" args
-      then args.__raw
+      if isLuaInline args
+      then args.expr
       else if hasAttr "__empty" args
-      then "{ }"
+      then
+        warn ''
+          Using `__empty` to define an empty lua table is deprecated. Use an empty attrset instead.
+        '' "{ }"
       else
         "{"
         + (concatStringsSep ","
@@ -60,27 +69,24 @@ in rec {
               then toLuaObject v
               else "[${toLuaObject n}] = " + (toLuaObject v))
             (filterAttrs
-              (
-                _: v:
-                  (v != null) && (toLuaObject v != "{}")
-              )
+              (_: v: v != null)
               args)))
         + "}"
-    else if builtins.isList args
+    else if isList args
     then "{" + concatMapStringsSep "," toLuaObject args + "}"
-    else if builtins.isString args
+    else if isString args
     then
       # This should be enough!
-      builtins.toJSON args
-    else if builtins.isPath args
-    then builtins.toJSON (toString args)
-    else if builtins.isBool args
+      toJSON args
+    else if isPath args
+    then toJSON (toString args)
+    else if isBool args
     then "${boolToString args}"
-    else if builtins.isFloat args
+    else if isFloat args
     then "${toString args}"
-    else if builtins.isInt args
+    else if isInt args
     then "${toString args}"
-    else if (args != null)
+    else if (args == null)
     then "nil"
-    else "";
+    else throw "could not convert object of type `${typeOf args}` to lua object";
 }
