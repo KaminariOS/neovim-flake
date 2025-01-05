@@ -390,6 +390,11 @@
       flake = false;
     };
 
+    plugin-nightfox = {
+      url = "github:EdenEast/nightfox.nvim";
+      flake = false;
+    };
+
     plugin-onedark = {
       url = "github:navarasu/onedark.nvim";
       flake = false;

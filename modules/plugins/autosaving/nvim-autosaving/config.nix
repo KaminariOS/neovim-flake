@@ -11,7 +11,7 @@ in {
   config =
     mkIf cfg.enable
     {
-      vim.startPlugins = ["auto-save-nvim"];
+      vim.startPlugins = [pkgs.vimPlugins.auto-save-nvim];
       vim.luaConfigRC.autosave = nvim.dag.entryAnywhere ''
                 require("auto-save").setup {
         -- your config goes here

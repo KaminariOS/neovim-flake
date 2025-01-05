@@ -1101,6 +1101,22 @@
         "type": "github"
       }
     },
+    "plugin-nightfox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735500747,
+        "narHash": "sha256-bVRI77ikBRECJ9Y6UVgZVO+SH46LBU3MtZUDgAYqXBc=",
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
+        "rev": "595ffb8f291fc4a9bef3201a28b7c0379a41cdee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "EdenEast",
+        "repo": "nightfox.nvim",
+        "type": "github"
+      }
+    },
     "plugin-noice-nvim": {
       "flake": false,
       "locked": {
@@ -2165,6 +2181,7 @@
         "plugin-neorg": "plugin-neorg",
         "plugin-neorg-telescope": "plugin-neorg-telescope",
         "plugin-new-file-template-nvim": "plugin-new-file-template-nvim",
+        "plugin-nightfox": "plugin-nightfox",
         "plugin-noice-nvim": "plugin-noice-nvim",
         "plugin-none-ls": "plugin-none-ls",
         "plugin-nui-nvim": "plugin-nui-nvim",

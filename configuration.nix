@@ -6,6 +6,13 @@ isMaximal: {
   config.vim = {
     viAlias = true;
     vimAlias = true;
+    useSystemClipboard = true;
+    undoFile = {
+      enable = true;
+    };
+    luaConfigRC.custom = builtins.readFile ./init.lua;
+    autosaving.enable = true;
+    preventJunkFiles = true;
     debugMode = {
       enable = false;
       level = 16;
@@ -14,6 +21,7 @@ isMaximal: {
 
     spellcheck = {
       enable = isMaximal;
+      programmingWordlist.enable = true;
     };
 
     lsp = {
@@ -111,7 +119,16 @@ isMaximal: {
 
       nvim-cursorline = {
         enable = true;
-        setupOpts.lineTimeout = 0;
+        setupOpts = {
+          cursorline = {
+            enable = true;
+          };
+          cursorword = {
+            enable = true;
+            hl = {underline = true;};
+          };
+          lineTimeout = 100;
+        };
       };
       # Fun
       cellular-automaton.enable = false;
@@ -120,13 +137,13 @@ isMaximal: {
     statusline = {
       lualine = {
         enable = true;
-        theme = "catppuccin";
+        theme = "auto";
       };
     };
 
     theme = {
       enable = true;
-      name = "catppuccin";
+      name = "nightfox";
       style = "mocha";
       transparent = true;
     };
@@ -141,7 +158,7 @@ isMaximal: {
         enable = true;
         setupOpts = {
           renderer = {
-            rootFolderLabel = true;
+            root_folder_label = true;
           };
 
           view = {
@@ -160,12 +177,12 @@ isMaximal: {
             enable = true;
           };
           renderer = {
-            highlightGit = true;
-            highlightModified = "all";
-            highlightOpenedFiles = "all";
+            highlight_git = true;
+            highlight_modified = "all";
+            highlight_opened_files = "all";
             icons = {
-              # gitPlacement = "after";
-              # modifiedPlacement = "before";
+              git_placement = "after";
+              modified_placement = "before";
               show = {
                 git = true;
                 modified = true;
@@ -174,11 +191,16 @@ isMaximal: {
           };
           diagnostics = {
             enable = true;
-            # showOnDirs = true;
+            show_on_dirs = true;
+          };
+          update_focused_file = {
+            enable = true;
+            # updateRoot = false;
+            # ignoreList = [];
           };
         };
         # openTreeOnNewTab = false;
-        openOnSetup = false;
+        openOnSetup = true;
       };
     };
 
@@ -207,8 +229,8 @@ isMaximal: {
     };
 
     dashboard = {
-      dashboard-nvim.enable = false;
-      alpha.enable = isMaximal;
+      dashboard-nvim.enable = true;
+      alpha.enable = true;
     };
 
     notify = {
@@ -265,7 +287,7 @@ isMaximal: {
         navbuddy.enable = isMaximal;
       };
       smartcolumn = {
-        enable = true;
+        enable = false;
         setupOpts.custom_colorcolumn = {
           # this is a freeform module, it's `buftype = int;` for configuring column position
           nix = "110";

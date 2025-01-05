@@ -7,7 +7,7 @@
   inherit (lib.strings) optionalString;
   inherit (lib.modules) mkIf;
   inherit (lib.nvim.binds) mkKeymap;
-  inherit (lib.nvim.dag) entryAnywhere;
+  inherit (lib.nvim.dag) entryBefore;
   inherit (lib.nvim.binds) pushDownDefault;
 
   cfg = config.vim.filetree.nvimTree;
@@ -34,7 +34,7 @@ in {
         ];
       };
 
-      pluginRC.nvim-tree = entryAnywhere ''
+      pluginRC.nvim-tree = entryBefore ["custom"] ''
         ${
           optionalString cfg.setupOpts.disable_netrw ''
             -- disable netrew completely
@@ -85,9 +85,14 @@ in {
 
               -- &ft
               local filetype = vim.bo[data.buf].ft
+              local tree_api = require("nvim-tree.api").tree
 
               -- only files please
               if not real_file and not directory and not no_name then
+                return
+              end
+
+              if real_file then
                 return
               end
 
@@ -98,14 +103,15 @@ in {
 
               -- cd if buffer is a directory
               if directory then
-                vim.cmd.cd(data.file)
+                -- change to the directory
+                tree_api.change_root(data.file)
+                -- open the tree
+                tree_api.open()
               end
-              -- open the tree but don't focus it
-              require("nvim-tree.api").tree.toggle({ focus = false })
             end
 
             -- function to automatically open the tree on VimEnter
-            vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+            vim.api.nvim_create_autocmd({ "BufEnter", "VimEnter" }, { callback = open_nvim_tree })
           ''
         }
       '';
