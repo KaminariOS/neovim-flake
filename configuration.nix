@@ -11,6 +11,8 @@ isMaximal: {
       enable = true;
     };
     luaConfigRC.custom = builtins.readFile ./init.lua;
+    extraPackages = [];
+    extraPlugins = {};
     autosaving.enable = true;
     preventJunkFiles = true;
     debugMode = {
@@ -20,20 +22,20 @@ isMaximal: {
     };
 
     spellcheck = {
-      enable = isMaximal;
+      enable = true;
       programmingWordlist.enable = true;
     };
 
     lsp = {
       formatOnSave = false;
-      lspkind.enable = false;
+      lspkind.enable = true;
       lightbulb.enable = true;
-      lspsaga.enable = false;
+      lspsaga.enable = !true;
       trouble.enable = true;
       lspSignature.enable = true;
-      otter-nvim.enable = isMaximal;
-      lsplines.enable = isMaximal;
-      nvim-docs-view.enable = isMaximal;
+      otter-nvim.enable = true;
+      lsplines.enable = true;
+      nvim-docs-view.enable = true;
     };
 
     debugger = {
@@ -70,7 +72,7 @@ isMaximal: {
       go.enable = isMaximal;
       lua.enable = isMaximal;
       zig.enable = isMaximal;
-      python.enable = isMaximal;
+      python.enable = true;
       typst.enable = isMaximal;
       tex.enable = true;
       yaml.enable = isMaximal;
@@ -79,7 +81,10 @@ isMaximal: {
       json.enable = isMaximal;
       rust = {
         enable = true;
-        crates.enable = true;
+        crates = {
+                enable = true;
+                codeActions = true;
+        };
       };
 
       # Language modules that are not as common.
@@ -229,7 +234,7 @@ isMaximal: {
     };
 
     dashboard = {
-      dashboard-nvim.enable = true;
+      dashboard-nvim.enable = !true;
       alpha.enable = true;
     };
 
@@ -244,9 +249,10 @@ isMaximal: {
     utility = {
       ccc.enable = false;
       vim-wakatime.enable = false;
-      icon-picker.enable = isMaximal;
+      icon-picker.enable = true;
       surround.enable = isMaximal;
       diffview-nvim.enable = true;
+      new-file-template.enable = true;
       motion = {
         hop.enable = true;
         leap.enable = true;
@@ -255,6 +261,12 @@ isMaximal: {
 
       images = {
         image-nvim.enable = !true;
+      };
+      preview = {
+        markdownPreview = {
+          enable = true;
+          autoStart = true;
+        };
       };
     };
 
@@ -270,6 +282,7 @@ isMaximal: {
       toggleterm = {
         enable = true;
         lazygit.enable = true;
+        mappings.open = "<c-\\>";
       };
     };
 
@@ -308,7 +321,7 @@ isMaximal: {
     };
 
     session = {
-      nvim-session-manager.enable = false;
+      nvim-session-manager.enable = !false;
       # neoconf.enable = true;
     };
 
