@@ -7,6 +7,14 @@ isMaximal: {
   config.vim = {
     viAlias = true;
     vimAlias = true;
+    undoFile = {
+      enable = true;
+    };
+    luaConfigRC.custom = builtins.readFile ./init.lua;
+    extraPackages = [];
+    extraPlugins = {};
+    # autosaving.enable = true;
+    preventJunkFiles = true;
     debugMode = {
       enable = false;
       level = 16;
@@ -15,22 +23,22 @@ isMaximal: {
 
     spellcheck = {
       enable = true;
-      programmingWordlist.enable = isMaximal;
+      programmingWordlist.enable = true;
     };
 
     lsp = {
+      formatOnSave = false;
+      lspkind.enable = true;
       # This must be enabled for the language modules to hook into
       # the LSP API.
       enable = true;
 
-      formatOnSave = true;
-      lspkind.enable = false;
       lightbulb.enable = true;
       lspsaga.enable = false;
       trouble.enable = true;
-      lspSignature.enable = !isMaximal; # conflicts with blink in maximal
-      otter-nvim.enable = isMaximal;
-      nvim-docs-view.enable = isMaximal;
+      lspSignature.enable = true;
+      otter-nvim.enable = true;
+      nvim-docs-view.enable = true;
     };
 
     debugger = {
@@ -49,13 +57,16 @@ isMaximal: {
 
       # Languages that will be supported in default and maximal configurations.
       nix.enable = true;
+      html = {
+        enable = true;
+        treesitter.autotagHtml = true;
+      };
       markdown.enable = true;
 
       # Languages that are enabled in the maximal configuration.
       bash.enable = isMaximal;
       clang.enable = isMaximal;
       css.enable = isMaximal;
-      html.enable = isMaximal;
       sql.enable = isMaximal;
       java.enable = isMaximal;
       kotlin.enable = isMaximal;
@@ -63,11 +74,19 @@ isMaximal: {
       go.enable = isMaximal;
       lua.enable = isMaximal;
       zig.enable = isMaximal;
-      python.enable = isMaximal;
+      python.enable = true;
       typst.enable = isMaximal;
+      # tex.enable = true;
+      # yaml.enable = isMaximal;
+      # toml.enable = isMaximal;
+      # cmake.enable = isMaximal;
+      # json.enable = isMaximal;
       rust = {
-        enable = isMaximal;
-        crates.enable = isMaximal;
+        enable = true;
+        crates = {
+                enable = true;
+                codeActions = true;
+        };
       };
 
       # Language modules that are not as common.
@@ -101,13 +120,25 @@ isMaximal: {
     visuals = {
       nvim-scrollbar.enable = isMaximal;
       nvim-web-devicons.enable = true;
-      nvim-cursorline.enable = true;
       cinnamon-nvim.enable = true;
-      fidget-nvim.enable = true;
+      fidget-nvim.enable = !true;
 
       highlight-undo.enable = true;
       indent-blankline.enable = true;
 
+      nvim-cursorline = {
+        enable = true;
+        setupOpts = {
+          cursorline = {
+            enable = true;
+          };
+          cursorword = {
+            enable = true;
+            hl = {underline = true;};
+          };
+          lineTimeout = 100;
+        };
+      };
       # Fun
       cellular-automaton.enable = false;
     };
@@ -123,7 +154,7 @@ isMaximal: {
       enable = true;
       name = "catppuccin";
       style = "mocha";
-      transparent = false;
+      transparent = true;
     };
 
     autopairs.nvim-autopairs.enable = true;
@@ -140,8 +171,53 @@ isMaximal: {
     snippets.luasnip.enable = true;
 
     filetree = {
-      neo-tree = {
+      nvimTree = {
         enable = true;
+        setupOpts = {
+          renderer = {
+            root_folder_label = true;
+          };
+
+          view = {
+            width = 25;
+          };
+          actions = {
+            open_file = {
+              quit_on_open = true;
+            };
+          };
+
+          git = {
+            enable = true;
+          };
+          modified = {
+            enable = true;
+          };
+          renderer = {
+            highlight_git = true;
+            highlight_modified = "all";
+            highlight_opened_files = "all";
+            icons = {
+              git_placement = "after";
+              modified_placement = "before";
+              show = {
+                git = true;
+                modified = true;
+              };
+            };
+          };
+          diagnostics = {
+            enable = true;
+            show_on_dirs = true;
+          };
+          update_focused_file = {
+            enable = true;
+            # updateRoot = false;
+            # ignoreList = [];
+          };
+        };
+        # openTreeOnNewTab = false;
+        openOnSetup = !true;
       };
     };
 
@@ -176,7 +252,7 @@ isMaximal: {
     };
 
     notify = {
-      nvim-notify.enable = true;
+      nvim-notify.enable = !true;
     };
 
     projects = {
@@ -202,8 +278,13 @@ isMaximal: {
         precognition.enable = isMaximal;
       };
       images = {
-        image-nvim.enable = false;
-        img-clip.enable = isMaximal;
+        image-nvim.enable = !true;
+      };
+      preview = {
+        markdownPreview = {
+          enable = true;
+          autoStart = true;
+        };
       };
     };
 
@@ -219,6 +300,7 @@ isMaximal: {
       toggleterm = {
         enable = true;
         lazygit.enable = true;
+        mappings.open = "<c-\\>";
       };
     };
 
@@ -233,7 +315,7 @@ isMaximal: {
         navbuddy.enable = isMaximal;
       };
       smartcolumn = {
-        enable = true;
+        enable = false;
         setupOpts.custom_colorcolumn = {
           # this is a freeform module, it's `buftype = int;` for configuring column position
           nix = "110";

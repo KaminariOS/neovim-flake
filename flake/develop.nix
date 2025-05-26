@@ -7,7 +7,7 @@
     ...
   }: {
     devShells = {
-      default = self'.devShells.lsp;
+      default = self'.devShells.nvim-nix;
       nvim-nix = pkgs.mkShellNoCC {packages = [config.packages.nix];};
       lsp = pkgs.mkShellNoCC {
         packages = with pkgs; [nil statix deadnix alejandra npins];
