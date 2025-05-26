@@ -13,7 +13,7 @@ isMaximal: {
     luaConfigRC.custom = builtins.readFile ./init.lua;
     extraPackages = [];
     extraPlugins = {};
-    autosaving.enable = true;
+    # autosaving.enable = true;
     preventJunkFiles = true;
     debugMode = {
       enable = false;
@@ -153,7 +153,7 @@ isMaximal: {
       transparent = true;
     };
 
-    autopairs.nvim-autopairs.enable = true;
+    # autopairs.nvim-autopairs.enable = true;
 
     autocomplete.nvim-cmp.enable = true;
     snippets.luasnip.enable = true;
@@ -170,9 +170,9 @@ isMaximal: {
             width = 25;
           };
           actions = {
-            # openFile = {
-            #   quitOnOpen = true;
-            # };
+            open_file = {
+              quit_on_open = true;
+            };
           };
 
           git = {
@@ -239,7 +239,7 @@ isMaximal: {
     };
 
     notify = {
-      nvim-notify.enable = true;
+      nvim-notify.enable = !true;
     };
 
     projects = {

@@ -43,7 +43,7 @@
       "ui"
       "utility"
       "visuals"
-      "autosaving"
+      # "autosaving"
     ];
 
     # The neovim wrapper, used to build a wrapped neovim package

@@ -102,3 +102,45 @@ end
 
 local root_augroup = vim.api.nvim_create_augroup('MyAutoRoot', {})
 vim.api.nvim_create_autocmd('BufEnter', { group = root_augroup, callback = set_root })
+
+
+-- Create an autocommand group to avoid duplicate autocommands
+vim.api.nvim_create_augroup("AutoSaveAndNotify", { clear = true })
+
+-- Save on leaving Insert mode if the buffer is modified, then notify
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = "AutoSaveAndNotify",
+  pattern = "*",
+  callback = function()
+    if vim.bo.modified then
+      vim.cmd("write")
+      vim.notify("File saved (InsertLeave)", vim.log.levels.INFO)
+    end
+  end,
+})
+
+-- Also save on losing focus if the buffer is modified, then notify
+vim.api.nvim_create_autocmd("FocusLost", {
+  group = "AutoSaveAndNotify",
+  pattern = "*",
+  callback = function()
+    if vim.bo.modified then
+      vim.cmd("write")
+      vim.notify("File saved (FocusLost)", vim.log.levels.INFO)
+    end
+  end,
+})
+
+
+vim.api.nvim_create_autocmd({ "TextChanged"}, {
+  group = "AutoSaveAndNotify",
+  pattern = "*",
+  callback = function()
+	if vim.fn.mode() ~= "i" and vim.bo.modified then
+      vim.cmd("write")
+      vim.notify("Auto-saved", vim.log.levels.INFO)
+    end
+  end,
+})
+
+vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
