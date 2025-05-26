@@ -64,8 +64,8 @@ isMaximal: {
       markdown.enable = true;
 
       # Languages that are enabled in the maximal configuration.
-      bash.enable = isMaximal;
-      clang.enable = isMaximal;
+      bash.enable = true;
+      clang.enable = true;
       css.enable = isMaximal;
       sql.enable = isMaximal;
       java.enable = isMaximal;
@@ -275,6 +275,10 @@ isMaximal: {
       undotree.enable = isMaximal;
       nvim-biscuits.enable = isMaximal;
 
+      outline.aerial-nvim = {
+        enable = true;
+        mappings.toggle = "<leader>a";
+      };
       motion = {
         hop.enable = true;
         leap.enable = true;
