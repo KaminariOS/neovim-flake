@@ -124,7 +124,10 @@ isMaximal: {
       fidget-nvim.enable = !true;
 
       highlight-undo.enable = true;
-      indent-blankline.enable = true;
+      indent-blankline = {
+            enable = true;
+            setupOpts.scope.highlight = [ "Function" "Label"];
+      };
 
       nvim-cursorline = {
         enable = true;
