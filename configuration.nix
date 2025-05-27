@@ -15,6 +15,10 @@ isMaximal: {
     extraPlugins = {};
     # autosaving.enable = true;
     preventJunkFiles = true;
+diagnostics = {
+    config.virtual_text = true;
+    enable = true;
+};
     debugMode = {
       enable = false;
       level = 16;
@@ -39,6 +43,11 @@ isMaximal: {
       lspSignature.enable = true;
       otter-nvim.enable = true;
       nvim-docs-view.enable = true;
+      mappings = {
+        goToDefinition = "gd";
+        nextDiagnostic = "gn";
+        previousDiagnostic = "gp";
+      };
     };
 
     debugger = {
@@ -84,8 +93,8 @@ isMaximal: {
       rust = {
         enable = true;
         crates = {
-                enable = true;
-                codeActions = true;
+          enable = true;
+          codeActions = true;
         };
       };
 
@@ -125,8 +134,8 @@ isMaximal: {
 
       highlight-undo.enable = true;
       indent-blankline = {
-            enable = true;
-            setupOpts.scope.highlight = [ "Function" "Label"];
+        enable = true;
+        setupOpts.scope.highlight = ["Function" "Label"];
       };
 
       nvim-cursorline = {
@@ -235,7 +244,11 @@ isMaximal: {
       cheatsheet.enable = true;
     };
 
-    telescope.enable = true;
+telescope = {
+
+    enable = true;
+    mappings.diagnostics = "<leader>fd";
+};
 
     git = {
       enable = true;
