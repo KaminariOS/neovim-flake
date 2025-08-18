@@ -255,6 +255,9 @@ telescope = {
       gitsigns.enable = true;
       gitsigns.codeActions.enable = false; # throws an annoying debug message
       neogit.enable = isMaximal;
+      gitsigns.setupOpts = {
+        current_line_blame = true;
+      };
     };
 
     minimap = {
