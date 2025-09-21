@@ -144,6 +144,25 @@ vim.api.nvim_create_autocmd({ "TextChanged"}, {
   end,
 })
 
+-- Ensure you have nvim-tree installed
+-- Example config snippet for init.lua
+
+-- Open nvim-tree when starting nvim with a directory
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function(data)
+    -- Check if the buffer is a directory
+    local directory = vim.fn.isdirectory(data.file) == 1
+
+    if directory then
+      -- change to the directory
+      vim.cmd.cd(data.file)
+
+      -- open nvim-tree
+      require("nvim-tree.api").tree.open()
+    end
+  end
+})
+
 vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
 
 vim.keymap.set("n", "<leader>ca", ":lua require('crates').show_popup()<CR>", { noremap = true, silent = true })

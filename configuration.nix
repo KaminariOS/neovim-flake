@@ -266,7 +266,7 @@ telescope = {
     };
 
     dashboard = {
-      dashboard-nvim.enable = false;
+      dashboard-nvim.enable = !false;
       alpha.enable = isMaximal;
     };
 
