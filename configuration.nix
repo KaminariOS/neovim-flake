@@ -15,10 +15,11 @@ isMaximal: {
     extraPlugins = {};
     # autosaving.enable = true;
     preventJunkFiles = true;
-diagnostics = {
-    config.virtual_text = true;
-    enable = true;
-};
+    diagnostics = {
+      config.virtual_text = true;
+      config.virtual_line = true;
+      enable = true;
+    };
     debugMode = {
       enable = false;
       level = 16;
@@ -244,11 +245,15 @@ diagnostics = {
       cheatsheet.enable = true;
     };
 
-telescope = {
-
-    enable = true;
-    mappings.diagnostics = "<leader>fd";
-};
+    telescope = {
+      enable = true;
+      mappings = {
+        diagnostics = "<leader>fd";
+        lspDefinitions = "<leader>gd";
+        lspImplementations = "<leader>gi";
+        lspReferences = "<leader>gr";
+      };
+    };
 
     git = {
       enable = true;
