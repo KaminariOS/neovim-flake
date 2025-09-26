@@ -78,10 +78,10 @@ isMaximal: {
       clang.enable = true;
       css.enable = isMaximal;
       sql.enable = isMaximal;
-      java.enable = isMaximal;
+      java.enable = true;
       kotlin.enable = true;
-      ts.enable = isMaximal;
-      go.enable = isMaximal;
+      ts.enable = true;
+      go.enable = true;
       lua.enable = isMaximal;
       zig.enable = isMaximal;
       python.enable = true;
