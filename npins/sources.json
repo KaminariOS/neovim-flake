@@ -2681,6 +2681,19 @@
       "revision": "04775cc6e10ef038c397c407bc17f00a2f52b378",
       "url": "https://github.com/gbprod/yanky.nvim/archive/04775cc6e10ef038c397c407bc17f00a2f52b378.tar.gz",
       "hash": "024dw52ji4691ndkaz3k12fx6qyvhdpd2r69r9d2isy81fbs2fjm"
+    },
+    "nvim-java": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nvim-java",
+        "repo": "nvim-java"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "3d56b74",
+      "url": "https://github.com/nvim-java/nvim-java/archive/3d56b7461facb42f135e25b2636bf220a7f0ed42.tar.gz",
+      "hash": "sha256-IqEH0JbNaqIZ/RSk42o4mpKvCx7F2Q2SsbsTEUX/3Yc="
     }
   },
   "version": 5

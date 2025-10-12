@@ -36,7 +36,9 @@ in {
   config = mkIf cfg.enable (mkMerge [
     (mkIf cfg.lsp.enable {
       vim.lsp.lspconfig.enable = true;
+      vim.startPlugins = with pkgs.vimPlugins; ["nvim-java"];
       vim.lsp.lspconfig.sources.jdtls = ''
+        require("java").setup()
         lspconfig.jdtls.setup {
           capabilities = capabilities,
           on_attach = default_on_attach,
