@@ -24,6 +24,19 @@
         lspconfig.gopls.setup {
           capabilities = capabilities;
           on_attach = default_on_attach;
+settings = {
+    gopls = {
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
           cmd = ${
           if isList cfg.lsp.package
           then expToLua cfg.lsp.package

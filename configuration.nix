@@ -37,6 +37,7 @@ isMaximal: {
       # This must be enabled for the language modules to hook into
       # the LSP API.
       enable = true;
+      inlayHints.enable = true;
 
       lightbulb.enable = true;
       lspsaga.enable = false;

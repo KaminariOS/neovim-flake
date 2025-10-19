@@ -163,7 +163,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end
 })
 
-vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
+-- vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr })
 
 vim.keymap.set("n", "<leader>ca", ":lua require('crates').show_popup()<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { noremap = true, silent = true })
