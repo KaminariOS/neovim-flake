@@ -3,8 +3,9 @@
 # an overview of nvf's module options. To find a complete and curated list of nvf module
 # options, examples, instruction tutorials and more; please visit the online manual.
 # https://notashelf.github.io/nvf/options.html
-isMaximal: {
+isMaximal: { pkgs, ... }: {
   config.vim = {
+    optPlugins = [ pkgs.vimPlugins.vim-ghost ];
     viAlias = true;
     vimAlias = true;
     undoFile = {
@@ -226,7 +227,7 @@ isMaximal: {
           };
           update_focused_file = {
             enable = true;
-            # updateRoot = false;
+            update_root = true;
             # ignoreList = [];
           };
         };

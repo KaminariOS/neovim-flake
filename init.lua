@@ -82,27 +82,30 @@ local root_names = { '.git', 'Makefile', 'CMakeList.txt', 'flake.nix', 'package.
 -- Cache to use for speed up (at cost of possibly outdated results)
 local root_cache = {}
 
-local set_root = function()
-  -- Get directory path to start search from
+local function set_root()
   local path = vim.api.nvim_buf_get_name(0)
   if path == '' then return end
   path = vim.fs.dirname(path)
 
-  -- Try cache and resort to searching upward for root directory
+  -- Try cache
   local root = root_cache[path]
-  if root == nil then
+  if not root then
     local root_file = vim.fs.find(root_names, { path = path, upward = true })[1]
-    if root_file == nil then return end
-    root = vim.fs.dirname(root_file)
+    if root_file then
+      root = vim.fs.dirname(root_file)
+    else
+      -- Fall back to the file’s own directory
+      root = path
+    end
     root_cache[path] = root
   end
 
-  -- Set current directory
+  -- Set current directory to root or file dir
   vim.fn.chdir(root)
 end
 
 local root_augroup = vim.api.nvim_create_augroup('MyAutoRoot', {})
-vim.api.nvim_create_autocmd('BufEnter', { group = root_augroup, callback = set_root })
+vim.api.nvim_create_autocmd({'BufEnter', 'VimEnter'}, { group = root_augroup, callback = set_root })
 
 
 -- Create an autocommand group to avoid duplicate autocommands
