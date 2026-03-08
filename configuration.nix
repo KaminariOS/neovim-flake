@@ -7,6 +7,18 @@ isMaximal: {
   config.vim = {
     viAlias = true;
     vimAlias = true;
+    undoFile.enable = true;
+    luaConfigRC.custom = builtins.readFile ./init.lua;
+    extraPackages = [];
+    extraPlugins = {};
+    preventJunkFiles = true;
+    diagnostics = {
+      enable = true;
+      config = {
+        virtual_text = true;
+        virtual_lines = true;
+      };
+    };
     debugMode = {
       enable = false;
       level = 16;
@@ -18,7 +30,7 @@ isMaximal: {
 
     spellcheck = {
       enable = true;
-      programmingWordlist.enable = isMaximal;
+      programmingWordlist.enable = true;
     };
 
     lsp = {
@@ -26,15 +38,20 @@ isMaximal: {
       # the LSP API.
       enable = true;
 
-      formatOnSave = true;
-      lspkind.enable = false;
+      formatOnSave = false;
+      lspkind.enable = true;
       lightbulb.enable = true;
       lspsaga.enable = false;
       trouble.enable = true;
-      lspSignature.enable = !isMaximal; # conflicts with blink in maximal
-      otter-nvim.enable = isMaximal;
-      nvim-docs-view.enable = isMaximal;
+      lspSignature.enable = !isMaximal;
+      otter-nvim.enable = true;
+      nvim-docs-view.enable = true;
       presets.harper.enable = isMaximal;
+      mappings = {
+        goToDefinition = "gd";
+        nextDiagnostic = "gn";
+        previousDiagnostic = "gp";
+      };
     };
 
     debugger = {
@@ -53,30 +70,33 @@ isMaximal: {
 
       # Languages that will be supported in default and maximal configurations.
       nix.enable = true;
+      html = {
+        enable = true;
+        treesitter.autotagHtml = true;
+      };
       markdown.enable = true;
 
       # Languages that are enabled in the maximal configuration.
-      bash.enable = isMaximal;
+      bash.enable = true;
       clang.enable = isMaximal;
       cmake.enable = isMaximal;
       css.enable = isMaximal;
       scss.enable = isMaximal;
-      html.enable = isMaximal;
       json.enable = isMaximal;
       sql.enable = isMaximal;
-      java.enable = isMaximal;
-      kotlin.enable = isMaximal;
-      typescript.enable = isMaximal;
-      go.enable = isMaximal;
+      java.enable = true;
+      kotlin.enable = true;
+      typescript.enable = true;
+      go.enable = true;
       lua.enable = isMaximal;
       zig.enable = isMaximal;
-      python.enable = isMaximal;
+      python.enable = true;
       typst.enable = isMaximal;
       rust = {
-        enable = isMaximal;
+        enable = true;
         # Can only be enabled if lsp.enable = false
         extensions.rustaceanvim.enable = false;
-        extensions.crates-nvim.enable = isMaximal;
+        extensions.crates-nvim.enable = true;
       };
       toml.enable = isMaximal;
       xml.enable = isMaximal;
@@ -140,11 +160,14 @@ isMaximal: {
       nvim-web-devicons.enable = true;
       nvim-cursorline.enable = true;
       cinnamon-nvim.enable = true;
-      fidget-nvim.enable = true;
+      fidget-nvim.enable = false;
 
       highlight-undo.enable = true;
       blink-indent.enable = true;
-      indent-blankline.enable = true;
+      indent-blankline = {
+        enable = true;
+        setupOpts.scope.highlight = ["Function" "Label"];
+      };
 
       # Fun
       cellular-automaton.enable = false;
@@ -168,7 +191,7 @@ isMaximal: {
       enable = true;
       name = "catppuccin";
       style = "mocha";
-      transparent = false;
+      transparent = true;
     };
 
     autopairs.nvim-autopairs.enable = true;
@@ -176,10 +199,12 @@ isMaximal: {
     # nvf provides various autocomplete options. The tried and tested nvim-cmp
     # is enabled in default package, because it does not trigger a build. We
     # enable blink-cmp in maximal because it needs to build its rust fuzzy
-    # matcher library.
     autocomplete = {
       nvim-cmp.enable = !isMaximal;
-      blink-cmp.enable = isMaximal;
+      blink-cmp = {
+        enable = isMaximal;
+        setupOpts.signature.enabled = isMaximal;
+      };
     };
 
     snippets.luasnip.enable = true;
@@ -187,6 +212,10 @@ isMaximal: {
     filetree = {
       neo-tree = {
         enable = true;
+        setupOpts = {
+          hide_root_node = true;
+          filesystem.hijack_netrw_behavior = "open_current";
+        };
       };
     };
 
@@ -201,13 +230,24 @@ isMaximal: {
       cheatsheet.enable = true;
     };
 
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+      mappings = {
+        diagnostics = "<leader>fd";
+        lspDefinitions = "<leader>gd";
+        lspImplementations = "<leader>gi";
+        lspReferences = "<leader>gr";
+      };
+    };
 
     git = {
       enable = true;
       gitsigns.enable = true;
       gitsigns.codeActions.enable = false; # throws an annoying debug message
       neogit.enable = isMaximal;
+      gitsigns.setupOpts = {
+        current_line_blame = true;
+      };
     };
 
     minimap = {
@@ -215,12 +255,12 @@ isMaximal: {
     };
 
     dashboard = {
-      dashboard-nvim.enable = false;
+      dashboard-nvim.enable = true;
       alpha.enable = isMaximal;
     };
 
     notify = {
-      nvim-notify.enable = true;
+      nvim-notify.enable = false;
     };
 
     projects = {
@@ -241,6 +281,10 @@ isMaximal: {
       undotree.enable = isMaximal;
       nvim-biscuits.enable = isMaximal;
       grug-far-nvim.enable = isMaximal;
+      outline.aerial-nvim = {
+        enable = true;
+        mappings.toggle = "<leader>a";
+      };
 
       motion = {
         hop.enable = true;
@@ -250,6 +294,10 @@ isMaximal: {
       images = {
         image-nvim.enable = false;
         img-clip.enable = isMaximal;
+      };
+      preview.markdownPreview = {
+        enable = true;
+        autoStart = true;
       };
     };
 
@@ -263,6 +311,7 @@ isMaximal: {
       toggleterm = {
         enable = true;
         lazygit.enable = true;
+        mappings.open = "<c-\\>";
       };
     };
 
@@ -274,7 +323,7 @@ isMaximal: {
       modes-nvim.enable = false; # the theme looks terrible with catppuccin
       illuminate.enable = true;
       smartcolumn = {
-        enable = true;
+        enable = false;
         setupOpts.custom_colorcolumn = {
           # this is a freeform module, it's `buftype = int;` for configuring column position
           nix = "110";
