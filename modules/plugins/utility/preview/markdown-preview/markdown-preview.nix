@@ -24,6 +24,12 @@ in {
         description = "Only update preview when saving or leaving insert mode";
       };
 
+      watchExternalChanges = mkOption {
+        type = bool;
+        default = true;
+        description = "Watch Markdown files for external changes and refresh active previews";
+      };
+
       filetypes = mkOption {
         type = listOf str;
         default = ["markdown"];
