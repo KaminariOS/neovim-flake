@@ -9,6 +9,11 @@ isMaximal: {
     vimAlias = true;
     undoFile.enable = true;
     luaConfigRC.custom = builtins.readFile ./init.lua;
+    clipboard = {
+      enable = true;
+      registers = "unnamedplus";
+      providers.wl-copy.enable = true;
+    };
     extraPackages = [];
     extraPlugins = {};
     preventJunkFiles = true;
@@ -101,7 +106,7 @@ isMaximal: {
       toml.enable = isMaximal;
       xml.enable = isMaximal;
       tex.enable = isMaximal;
-      docker.enable = isMaximal;
+      docker.enable = true;
       env.enable = isMaximal;
 
       # Language modules that are not as common.
