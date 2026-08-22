@@ -89,8 +89,18 @@ isMaximal: {
       scss.enable = isMaximal;
       json.enable = isMaximal;
       sql.enable = isMaximal;
-      java.enable = true;
-      kotlin.enable = true;
+      java = {
+        enable = true;
+        # jdt-language-server wraps an OpenJDK; drop it from the closure
+        lsp.enable = false;
+      };
+      kotlin = {
+        enable = true;
+        # kotlin-language-server depends on an OpenJDK
+        lsp.enable = false;
+        # ktlint is a JVM tool that pulls an OpenJDK
+        extraDiagnostics.enable = false;
+      };
       typescript.enable = true;
       go.enable = true;
       lua.enable = isMaximal;
@@ -104,7 +114,11 @@ isMaximal: {
         extensions.crates-nvim.enable = true;
       };
       toml.enable = isMaximal;
-      xml.enable = isMaximal;
+      xml = {
+        enable = isMaximal;
+        # lemminx wraps an OpenJDK JRE; drop it from the closure
+        lsp.enable = false;
+      };
       tex.enable = isMaximal;
       docker.enable = true;
       env.enable = isMaximal;
